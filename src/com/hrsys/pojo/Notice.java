@@ -15,17 +15,19 @@ public class Notice implements Serializable{
 	private String nContent;     //公告内容
 	private String nCreateTime;  //公告创建时间
 	private Integer uId;         //创建公告人的id
+	private Integer nState;      //公告状态
 	public Notice() {
 		super();
 		
 	}
-	public Notice(Integer nId, String nName, String nContent, String nCreateTime, Integer uId) {
+	public Notice(Integer nId, String nName, String nContent, String nCreateTime, Integer uId, Integer nState) {
 		super();
 		this.nId = nId;
 		this.nName = nName;
 		this.nContent = nContent;
 		this.nCreateTime = nCreateTime;
 		this.uId = uId;
+		this.nState = nState;
 	}
 	public Integer getnId() {
 		return nId;
@@ -57,9 +59,15 @@ public class Notice implements Serializable{
 	public void setuId(Integer uId) {
 		this.uId = uId;
 	}
+	public Integer getnState() {
+		return nState;
+	}
+	public void setnState(Integer nState) {
+		this.nState = nState;
+	}
 	@Override
 	public String toString() {
 		return "Notice [nId=" + nId + ", nName=" + nName + ", nContent=" + nContent + ", nCreateTime=" + nCreateTime
-				+ ", uId=" + uId + "]";
+				+ ", uId=" + uId + ", nState=" + nState + "]";
 	}
 }
