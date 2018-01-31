@@ -36,12 +36,13 @@ public class UserDao implements IUserDao{
 	}
 
 	@Override
-	public List<User> findUserByLikeName(User user) throws SQLException {
+	public List<User> findUserByCondition(User user) throws SQLException {
 		return null;
 	}
 
 	@Override
-	public List<User> findUserByState(User user) throws SQLException {
+	public User findUserById(User user) throws SQLException {
 		return null;
 	}
+
 }

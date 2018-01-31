@@ -36,27 +36,27 @@ public interface INoticeDao {
 	
 	/**
 	 * 
-	 * @Title: findNoticeByLikeTile 
-	 * @Description: 通过主题模糊查询公告信息 
+	 * @Title: findNoticeByCondition 
+	 * @Description: 通过条件查找 
 	 * @param @param notice
 	 * @param @return
 	 * @param @throws SQLException  参数说明 
 	 * @return List<Notice>    返回类型 
 	 * @throws
 	 */
-	List<Notice> findNoticeByLikeTile(Notice notice) throws SQLException;
+	List<Notice> findNoticeByCondition(Notice notice) throws SQLException;
+	
 	/**
 	 * 
-	 * @Title: findNoticeByLikeContent 
-	 * @Description: 通过内容模糊查询公告信息 
+	 * @Title: findNoticeById 
+	 * @Description: 通过id查找 
 	 * @param @param notice
 	 * @param @return
 	 * @param @throws SQLException  参数说明 
-	 * @return List<Notice>    返回类型 
+	 * @return Notice    返回类型 
 	 * @throws
 	 */
-	List<Notice> findNoticeByLikeContent(Notice notice) throws SQLException;
-	
+	Notice findNoticeById(Notice notice) throws SQLException;
 	/**
 	 * 
 	 * @Title: removeNotice 

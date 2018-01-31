@@ -34,6 +34,28 @@ public interface IUserDao {
 	 * @throws
 	 */
 	List<User> findAllUser() throws SQLException;
+	/**
+	 * 
+	 * @Title: findUserByCondition 
+	 * @Description: 通过条件查找 
+	 * @param @param user
+	 * @param @return
+	 * @param @throws SQLException  参数说明 
+	 * @return List<User>    返回类型 
+	 * @throws
+	 */
+	List<User> findUserByCondition(User user) throws SQLException;
+	/**
+	 * 
+	 * @Title: findUserById 
+	 * @Description: 通过id查找 
+	 * @param @param user
+	 * @param @return
+	 * @param @throws SQLException  参数说明 
+	 * @return User    返回类型 
+	 * @throws
+	 */
+	User findUserById(User user) throws SQLException;
 	
 	/**
 	 * 
@@ -57,27 +79,4 @@ public interface IUserDao {
 	 */
 	void removeUser(User user) throws SQLException;
 	
-	/**
-	 * 
-	 * @Title: findUserByLikeName 
-	 * @Description: 通过输入的用户名模糊查询
-	 * @param @param user
-	 * @param @return
-	 * @param @throws SQLException  参数说明 
-	 * @return List<User>    返回类型 
-	 * @throws
-	 */
-	List<User> findUserByLikeName(User user) throws SQLException;
-	
-	/**
-	 * 
-	 * @Title: findUserByState 
-	 * @Description: 通过状态查询所有用户 
-	 * @param @param user
-	 * @param @return
-	 * @param @throws SQLException  参数说明 
-	 * @return List<User>    返回类型 
-	 * @throws
-	 */
-	List<User> findUserByState(User user) throws SQLException;
 }

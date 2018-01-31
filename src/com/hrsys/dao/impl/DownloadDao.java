@@ -35,4 +35,16 @@ public class DownloadDao implements IDownloadDao{
 		
 	}
 
+	@Override
+	public DownLoad findDownloadById(DownLoad downLoad) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<DownLoad> findDownloadByCondition(DownLoad downLoad) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

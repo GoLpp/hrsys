@@ -24,6 +24,29 @@ public interface IDownloadDao {
 	
 	/**
 	 * 
+	 * @Title: findDownloadById 
+	 * @Description: 通过id查找 
+	 * @param @param downLoad
+	 * @param @return
+	 * @param @throws SQLException  参数说明 
+	 * @return DownLoad    返回类型 
+	 * @throws
+	 */
+	DownLoad findDownloadById(DownLoad downLoad) throws SQLException;
+	
+	/**
+	 * 
+	 * @Title: findDownloadByCondition 
+	 * @Description: 通过条件查找 
+	 * @param @param downLoad
+	 * @param @return
+	 * @param @throws SQLException  参数说明 
+	 * @return List<DownLoad>    返回类型 
+	 * @throws
+	 */
+	List<DownLoad> findDownloadByCondition(DownLoad downLoad) throws SQLException;
+	/**
+	 * 
 	 * @Title: removeDownload 
 	 * @Description: 移除上传的资源
 	 * @param @param infor

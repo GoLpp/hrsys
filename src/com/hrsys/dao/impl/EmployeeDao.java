@@ -21,32 +21,24 @@ public class EmployeeDao implements IEmployeeDao{
 	}
 
 	@Override
-	public List<Employee> findEmployeeByJobName(Employee employee) throws SQLException {
-		return null;
-	}
-
-	@Override
-	public List<Employee> findEmpoyeeByGender(boolean b) throws SQLException {
-		return null;
-	}
-
-	@Override
-	public List<Employee> findEmployeeByDept(String deptName) throws SQLException {
-		return null;
-	}
-
-	@Override
-	public List<Employee> findEmployeeByInfor(Employee employee) throws SQLException {
-		return null;
-	}
-
-	@Override
 	public void removeEmployee(Employee employee) throws SQLException {
 		
 	}
 
 	@Override
 	public void update(Employee employee) throws SQLException {
+	}
+
+	@Override
+	public Employee findEmployeeById(Employee employee) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Employee> findEmployeeByCondition(Employee employee) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

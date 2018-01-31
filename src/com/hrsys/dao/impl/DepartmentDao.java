@@ -20,11 +20,7 @@ public class DepartmentDao implements IDepartmentDao{
 		return null;
 	}
 
-	@Override
-	public List<Department> findDepartByLikeName(String dName) throws SQLException {
-		return null;
-	}
-
+	
 	@Override
 	public void removeDepartment(Department dept) throws SQLException {
 		
@@ -38,6 +34,19 @@ public class DepartmentDao implements IDepartmentDao{
 	@Override
 	public void insertDepartment(Department dept) throws SQLException {
 		
+	}
+
+
+	@Override
+	public List<Department> findDeptByCondition(Department dept) throws SQLException {
+		return null;
+	}
+
+
+	@Override
+	public Department findDeptById(Department dept) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

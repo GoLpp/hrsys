@@ -25,49 +25,26 @@ public interface IEmployeeDao {
 	List<Employee> findAllEmployee() throws SQLException;
 	/**
 	 * 
-	 * @Title: findEmployeeByJobName 
-	 * @Description: 通过职位查找员工 
+	 * @Title: findEmployeeById 
+	 * @Description: 通过id查找 
+	 * @param @param employee
+	 * @param @return
+	 * @param @throws SQLException  参数说明 
+	 * @return Employee    返回类型 
+	 * @throws
+	 */
+	Employee findEmployeeById(Employee employee) throws SQLException;
+	/**
+	 * 
+	 * @Title: findEmployeeByCondition 
+	 * @Description: 通过条件查找 
 	 * @param @param employee
 	 * @param @return
 	 * @param @throws SQLException  参数说明 
 	 * @return List<Employee>    返回类型 
 	 * @throws
 	 */
-	List<Employee> findEmployeeByJobName(Employee employee) throws SQLException;
-	/**
-	 * 
-	 * @Title: findEmpoyeeByGender 
-	 * @Description: 通过性别查找员工
-	 * @param @param b
-	 * @param @return
-	 * @param @throws SQLException  参数说明 
-	 * @return List<Employee>    返回类型 
-	 * @throws
-	 */
-	List<Employee> findEmpoyeeByGender(boolean b) throws SQLException;
-	/**
-	 * 
-	 * @Title: findEmployeeByDept 
-	 * @Description: 通过部门查找员工 
-	 * @param @param deptName
-	 * @param @return
-	 * @param @throws SQLException  参数说明 
-	 * @return List<Employee>    返回类型 
-	 * @throws
-	 */
-	List<Employee> findEmployeeByDept(String deptName) throws SQLException;
-	/**
-	 * 
-	 * @Title: findEmployeeByInfor 
-	 * @Description: 通过用户的姓名手机号和身份证号查找用户 
-	 * @param @param employee
-	 * @param @return
-	 * @param @throws SQLException  参数说明 
-	 * @return List<Employee>    返回类型 
-	 * @throws
-	 */
-	List<Employee> findEmployeeByInfor(Employee employee) throws SQLException;
-	
+	List<Employee> findEmployeeByCondition(Employee employee) throws SQLException;
 	/**
 	 * 
 	 * @Title: removeEmployee 

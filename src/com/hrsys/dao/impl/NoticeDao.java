@@ -26,16 +26,6 @@ public class NoticeDao implements INoticeDao{
 	}
 
 	@Override
-	public List<Notice> findNoticeByLikeTile(Notice notice) throws SQLException {
-		return null;
-	}
-
-	@Override
-	public List<Notice> findNoticeByLikeContent(Notice notice) throws SQLException {
-		return null;
-	}
-
-	@Override
 	public void removeNotice(Notice notice) throws SQLException {
 		
 	}
@@ -43,6 +33,18 @@ public class NoticeDao implements INoticeDao{
 	@Override
 	public void updateNotice(Notice notice) throws SQLException {
 		
+	}
+
+	@Override
+	public List<Notice> findNoticeByCondition(Notice notice) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Notice findNoticeById(Notice notice) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

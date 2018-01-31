@@ -26,14 +26,26 @@ public interface IDepartmentDao {
 	List<Department> findAllDepartment() throws SQLException;
 	/**
 	 * 
-	 * @Title: findDepartByLikeName 
-	 * @Description: 模糊查询部门信息 
-	 * @param @param dName
-	 * @param @return  参数说明 
+	 * @Title: findDeptByCondition 
+	 * @Description: 组合条件查询
+	 * @param @return
+	 * @param @throws SQLException  参数说明 
 	 * @return List<Department>    返回类型 
 	 * @throws
 	 */
-	List<Department> findDepartByLikeName(String dName) throws SQLException;
+	List<Department> findDeptByCondition(Department dept) throws SQLException;
+	
+	/**
+	 * 
+	 * @Title: findDeptById 
+	 * @Description: 根据id查询部门
+	 * @param @param dept
+	 * @param @return
+	 * @param @throws SQLException  参数说明 
+	 * @return List<Department>    返回类型 
+	 * @throws
+	 */
+	Department findDeptById(Department dept) throws SQLException;
 	
 	/**
 	 * 

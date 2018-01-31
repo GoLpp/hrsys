@@ -31,13 +31,20 @@ public class JobDao implements IJobDao{
 	}
 
 	@Override
-	public List<Job> findJobByLikeName(String name) throws SQLException {
+	public void updateJob(Job job) throws SQLException {
+		
+	}
+
+	@Override
+	public List<Job> findJobByConditon(Job job) throws SQLException {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void updateJob(Job job) throws SQLException {
-		
+	public Job findJobById(Job job) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

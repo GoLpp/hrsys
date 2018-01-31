@@ -42,20 +42,28 @@ public interface IJobDao {
 	 * @throws
 	 */
 	void removeJob(Integer jId) throws SQLException;
-	
-	
 	/**
 	 * 
-	 * @Title: findJobByLikeName 
-	 * @Description: 模糊查找部门信息 
-	 * @param @param name
+	 * @Title: findJobByConditon 
+	 * @Description: 通过条件查找
+	 * @param @param job
 	 * @param @return
 	 * @param @throws SQLException  参数说明 
 	 * @return List<Job>    返回类型 
 	 * @throws
 	 */
-	List<Job> findJobByLikeName(String name) throws SQLException;
-	
+	List<Job> findJobByConditon(Job job) throws SQLException;	
+	/**
+	 * 
+	 * @Title: findJobById 
+	 * @Description: 通过id查找 
+	 * @param @param job
+	 * @param @return
+	 * @param @throws SQLException  参数说明 
+	 * @return Job    返回类型 
+	 * @throws
+	 */
+	Job findJobById(Job job) throws SQLException;
 	/**
 	 * 
 	 * @Title: updateJob 
