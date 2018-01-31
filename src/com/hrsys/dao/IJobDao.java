@@ -1,7 +1,7 @@
 package com.hrsys.dao;
 
 import java.sql.SQLException;
-
+import java.util.List;
 import com.hrsys.pojo.Job;
 /**
  * 
@@ -12,6 +12,58 @@ import com.hrsys.pojo.Job;
  *
  */
 public interface IJobDao {
+	/**
+	 * 
+	 * @Title: insert 
+	 * @Description: 添加一个职位 
+	 * @param @param job
+	 * @param @throws SQLException  参数说明 
+	 * @return void    返回类型 
+	 * @throws
+	 */
 	void insert(Job job) throws SQLException;
-	void findAllJob() throws SQLException;
+	
+	/**
+	 * 
+	 * @Title: findAllJob 
+	 * @Description: 查找所有职位
+	 * @param @throws SQLException  参数说明 
+	 * @return void    返回类型 
+	 * @throws
+	 */
+	List<Job> findAllJob() throws SQLException;
+	
+	/**
+	 * 
+	 * @Title: removeJob 
+	 * @Description: 删除一个职位 
+	 * @param @throws SQLException  参数说明 
+	 * @return void    返回类型 
+	 * @throws
+	 */
+	void removeJob(Integer jId) throws SQLException;
+	
+	
+	/**
+	 * 
+	 * @Title: findJobByLikeName 
+	 * @Description: 模糊查找部门信息 
+	 * @param @param name
+	 * @param @return
+	 * @param @throws SQLException  参数说明 
+	 * @return List<Job>    返回类型 
+	 * @throws
+	 */
+	List<Job> findJobByLikeName(String name) throws SQLException;
+	
+	/**
+	 * 
+	 * @Title: updateJob 
+	 * @Description: 更新职位信息
+	 * @param @param job
+	 * @param @throws SQLException  参数说明 
+	 * @return void    返回类型 
+	 * @throws
+	 */
+	void updateJob(Job job) throws SQLException;
 }

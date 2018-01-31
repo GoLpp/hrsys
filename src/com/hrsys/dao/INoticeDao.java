@@ -1,6 +1,8 @@
 package com.hrsys.dao;
 
 import java.sql.SQLException;
+import java.util.List;
+
 import com.hrsys.pojo.Notice;
 /**
  * 
@@ -30,5 +32,50 @@ public interface INoticeDao {
 	 * @return void    返回类型 
 	 * @throws
 	 */
-	void findAllNotice() throws SQLException;
+	List<Notice> findAllNotice() throws SQLException;
+	
+	/**
+	 * 
+	 * @Title: findNoticeByLikeTile 
+	 * @Description: 通过主题模糊查询公告信息 
+	 * @param @param notice
+	 * @param @return
+	 * @param @throws SQLException  参数说明 
+	 * @return List<Notice>    返回类型 
+	 * @throws
+	 */
+	List<Notice> findNoticeByLikeTile(Notice notice) throws SQLException;
+	/**
+	 * 
+	 * @Title: findNoticeByLikeContent 
+	 * @Description: 通过内容模糊查询公告信息 
+	 * @param @param notice
+	 * @param @return
+	 * @param @throws SQLException  参数说明 
+	 * @return List<Notice>    返回类型 
+	 * @throws
+	 */
+	List<Notice> findNoticeByLikeContent(Notice notice) throws SQLException;
+	
+	/**
+	 * 
+	 * @Title: removeNotice 
+	 * @Description: 移除公告 
+	 * @param @param notice
+	 * @param @throws SQLException  参数说明 
+	 * @return void    返回类型 
+	 * @throws
+	 */
+	void removeNotice(Notice notice) throws SQLException;
+	
+	/**
+	 * 
+	 * @Title: updateNotice 
+	 * @Description: 更新公告
+	 * @param @param notice
+	 * @param @throws SQLException  参数说明 
+	 * @return void    返回类型 
+	 * @throws
+	 */
+	void updateNotice(Notice notice) throws SQLException;
 }
