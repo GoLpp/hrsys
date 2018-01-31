@@ -1,18 +1,19 @@
-package com.hrsys.dao;
+package com.hrsys.service;
 
 import java.sql.SQLException;
 import java.util.List;
 
 import com.hrsys.pojo.User;
+
 /**
  * 
- * @ClassName: IUserDao 
- * @Description:用户数据访问层 
+ * @ClassName: IUserService 
+ * @Description: 用户业务逻辑层接口
  * @author GG Bone
- * @date 2018年1月30日 下午7:28:25 
+ * @date 2018年1月31日 下午6:53:43 
  *
  */
-public interface IUserDao {
+public interface IUserService {
 	/**
 	 * 
 	 * @Title: insert 
@@ -89,5 +90,5 @@ public interface IUserDao {
 	 * @return User    返回类型 
 	 * @throws
 	 */
-	User findUserByLogNameAndPwd(User user) throws SQLException;	
+	User findUserByLogNameAndPwd(User user) throws SQLException;
 }
