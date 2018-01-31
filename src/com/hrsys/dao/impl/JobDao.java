@@ -46,7 +46,7 @@ public class JobDao implements IJobDao{
 
 	@Override
 	public List<Job> findJobByConditon(Job job) throws SQLException {
-		String sql = "select * from t_job where jName=? and jState=1";
+		String sql = "select * from t_job where jName like ? and jState=1";
 		return JdbcUtils.getQueryRunner().query(sql, new BeanListHandler<>(Job.class),"%" + job.getjName() + "%");
 	}
 

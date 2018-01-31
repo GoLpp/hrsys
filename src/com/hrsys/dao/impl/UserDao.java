@@ -52,10 +52,10 @@ public class UserDao implements IUserDao{
 	public List<User> findUserByCondition(User user) throws SQLException {
 		StringBuilder sql = new StringBuilder("select *from t_user where 1=1 and uState=1");
 		if(user.getuName()!=null && !user.getuName().equals("")) {
-			sql.append(" and nName='%"+user.getuName()+"%'");
+			sql.append(" and uName like '%"+user.getuName()+"%'");
 		}
 		if(user.getuState()!=null) {
-			sql.append(" and nContent='%"+user.getuState()+"%'");
+			sql.append(" and uState like '%"+user.getuState()+"%'");
 		}
 		return JdbcUtils.getQueryRunner().query(sql.toString(), new BeanListHandler<>(User.class));
 

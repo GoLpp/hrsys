@@ -53,10 +53,10 @@ public class NoticeDao implements INoticeDao{
 	public List<Notice> findNoticeByCondition(Notice notice) throws SQLException {
 		StringBuilder sql = new StringBuilder("select *from t_notice where 1=1 and nState=1");
 		if(notice.getnName()!=null && !notice.getnName().equals("")) {
-			sql.append(" and nName='%"+notice.getnName()+"%'");
+			sql.append(" and nName like '%"+notice.getnName()+"%'");
 		}
 		if(notice.getnContent()!=null && notice.getnContent().equals("")) {
-			sql.append(" and nContent='%"+notice.getnContent()+"%'");
+			sql.append(" and nContent like '%"+notice.getnContent()+"%'");
 		}
 		return JdbcUtils.getQueryRunner().query(sql.toString(), new BeanListHandler<>(Notice.class));
 	}

@@ -88,22 +88,22 @@ public class EmployeeDao implements IEmployeeDao{
  */
 	private void handleSql(Employee employee, StringBuilder sql) {
 		if(employee.geteName()!=null && !employee.geteName().equals("")) {
-			sql.append(" and eName='%"+employee.geteName()+"%'");
+			sql.append(" and eName like '%"+employee.geteName()+"%'");
 		}
 		if(employee.getdId() != null) {
-			sql.append(" and dId='%"+employee.getdId()+"%'");
+			sql.append(" and dId like '%"+employee.getdId()+"%'");
 		}
 		if(employee.geteGender() != null) {
-			sql.append(" and eGender='"+employee.geteGender()+"'");
+			sql.append(" and eGender like '"+employee.geteGender()+"'");
 		}
 		if(employee.geteTelNum() != null && !employee.geteTelNum().equals("")) {
-			sql.append(" and eTelNum='%"+employee.geteTelNum()+"%'");
+			sql.append(" and eTelNum like '%"+employee.geteTelNum()+"%'");
 		}
 		if(employee.geteIdCard() != null && !employee.geteIdCard().equals("")) {
-			sql.append(" and eIdCard='%"+employee.geteIdCard()+"%'");
+			sql.append(" and eIdCard like '%"+employee.geteIdCard()+"%'");
 		}
 		if(employee.getdId() != null) {
-			sql.append(" and dId='%"+employee.getdId()+"%'");
+			sql.append(" and dId like '%"+employee.getdId()+"%'");
 		}
 	}
 }

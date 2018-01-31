@@ -62,7 +62,7 @@ public class DownloadDao implements IDownloadDao{
 
 	@Override
 	public List<DownLoad> findDownloadByCondition(DownLoad downLoad) throws SQLException {
-		String sql = "select *from t_download where doTitle=? and downState=1";
+		String sql = "select *from t_download where doTitle like ? and downState=1";
 		return JdbcUtils.getQueryRunner().query(sql, new BeanListHandler<>(DownLoad.class),"%"+downLoad.getDoTitle()+"%");
 	}
 

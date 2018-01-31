@@ -49,7 +49,7 @@ public class DepartmentDao implements IDepartmentDao{
 
 	@Override
 	public List<Department> findDeptByCondition(Department dept) throws SQLException {
-		String sql = "select * from t_department where dName=? and dState=1";
+		String sql = "select * from t_department where dName like ? and dState=1";
 		return JdbcUtils.getQueryRunner().query(sql, new BeanListHandler<>(Department.class),"%"+dept.getdName()+"%");
 	}
 
