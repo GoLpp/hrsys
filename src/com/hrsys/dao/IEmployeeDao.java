@@ -65,4 +65,14 @@ public interface IEmployeeDao {
 	 * @throws
 	 */
 	void update(Employee employee) throws SQLException;
+	/**
+	 * 
+	 * @Title: insertEmployee 
+	 * @Description: 添加一个员工
+	 * @param @param employee
+	 * @param @throws SQLException  参数说明 
+	 * @return void    返回类型 
+	 * @throws
+	 */
+	void insertEmployee(Employee employee) throws SQLException;
 }

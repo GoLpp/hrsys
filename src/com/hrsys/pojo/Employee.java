@@ -13,7 +13,7 @@ import java.sql.Date;
 public class Employee implements Serializable{
 	private Integer eId;      //员工id
 	private String eName;	  //员工姓名
-	private boolean eGender;  //员工性别
+	private Integer eGender;  //员工性别
 	private String eTelNum;   //员工手机号码
 	private String eEmail;    //员工邮箱地址
 	private String jId;       //职位id
@@ -27,7 +27,7 @@ public class Employee implements Serializable{
 		super();
 		
 	}
-	public Employee(Integer eId, String eName, boolean eGender, String eTelNum, String eEmail, String jId, String eStu,
+	public Employee(Integer eId, String eName, Integer eGender, String eTelNum, String eEmail, String jId, String eStu,
 			Integer dId, String eIdCard, Date eCreateTime, String eAddress, Integer eState) {
 		super();
 		this.eId = eId;
@@ -55,10 +55,10 @@ public class Employee implements Serializable{
 	public void seteName(String eName) {
 		this.eName = eName;
 	}
-	public boolean iseGender() {
+	public Integer geteGender() {
 		return eGender;
 	}
-	public void seteGender(boolean eGender) {
+	public void seteGender(Integer eGender) {
 		this.eGender = eGender;
 	}
 	public String geteTelNum() {

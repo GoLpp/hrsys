@@ -1,0 +1,22 @@
+<c3p0-config>
+  <default-config>
+     <!--驱动-->
+     <property name="driverClass">com.mysql.jdbc.Driver</property>
+     <!--访问的url-->
+     <property name="jdbcUrl">jdbc:mysql://localhost:3306/booksys?useSSL=false</property>
+     <!--用户-->
+     <property name="user">root</property>
+     <!--密码-->
+     <property name="password">123456</property>
+     <!--池子里面的最小数-->
+     <property name="minPoolSize">5</property>
+     <!--池子里面的最大数-->
+     <property name="maxPoolSize">100</property>
+     <!--默认不够的时候每一次的增量-->
+     <property name="acquireIncrement">5</property>
+     <!--最大的空闲时间-->
+     <property name="maxIdleTime">3000</property>
+     <!--最大的并发数-->
+     <property name="maxStatements">100</property>  
+  </default-config>
+</c3p0-config>

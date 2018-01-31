@@ -41,7 +41,7 @@ public interface IJobDao {
 	 * @return void    ∑µªÿ¿‡–Õ 
 	 * @throws
 	 */
-	void removeJob(Integer jId) throws SQLException;
+	void removeJob(Job job) throws SQLException;
 	/**
 	 * 
 	 * @Title: findJobByConditon 

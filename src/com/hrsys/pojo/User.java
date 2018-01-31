@@ -16,7 +16,7 @@ public class User implements Serializable{
 	private String uName;           //用户名
 	private String uPwd;            //用户密码
 	private String uLoginName;      //用户登录名
-	private int uState;             //用户状态
+	private Integer uState;             //用户状态
 	private Date uCreateTime;       //用户创建日期
 	
 	public User() {
@@ -24,7 +24,7 @@ public class User implements Serializable{
 		
 	}
 
-	public User(Integer uId, String uName, String uPwd, String uLoginName, int uState, Date uCreateTime) {
+	public User(Integer uId, String uName, String uPwd, String uLoginName, Integer uState, Date uCreateTime) {
 		super();
 		this.uId = uId;
 		this.uName = uName;
@@ -66,11 +66,11 @@ public class User implements Serializable{
 		this.uLoginName = uLoginName;
 	}
 
-	public int getuState() {
+	public Integer getuState() {
 		return uState;
 	}
 
-	public void setuState(int uState) {
+	public void setuState(Integer uState) {
 		this.uState = uState;
 	}
 

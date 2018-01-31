@@ -20,7 +20,7 @@ public interface IDownloadDao {
 	 * @return List<DownLoad>    返回类型 
 	 * @throws
 	 */
-	List<DownLoad> findAllDownload(String infor) throws SQLException;
+	List<DownLoad> findAllDownload(DownLoad downLoad) throws SQLException;
 	
 	/**
 	 * 
@@ -54,7 +54,7 @@ public interface IDownloadDao {
 	 * @return void    返回类型 
 	 * @throws
 	 */
-	void removeDownload(String infor) throws SQLException;
+	void removeDownload(DownLoad downLoad) throws SQLException;
 	
 	/**
 	 * 
