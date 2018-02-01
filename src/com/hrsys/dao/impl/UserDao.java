@@ -58,7 +58,6 @@ public class UserDao implements IUserDao{
 		if(user.getuState()!=null && user.getuState()!=0) {
 			sql.append(" and uState like '%"+user.getuState()+"%'");
 		}
-		System.out.println(sql.toString());
 		return JdbcUtils.getQueryRunner().query(sql.toString(), new BeanListHandler<>(User.class));
 
 	}

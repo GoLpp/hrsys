@@ -109,7 +109,7 @@
 							<div class="input-icon left">
 								<i class="icon-user"></i> <input
 									class="m-wrap placeholder-no-fix" type="text" placeholder="帐号"
-									id="loginname" name="uLoginName" value="${uLoginName}">
+									id="loginname" name="uLoginName" value="${user.uLoginName}">
 							</div>
 						</div>
 					</div>
@@ -119,7 +119,7 @@
 								<i class="icon-lock"></i> <input
 									class="m-wrap placeholder-no-fix" type="password"
 									placeholder="密码" id="password" name="uPwd"
-									value="${uPwd}">
+									value="${user.uPwd}">
 							</div>
 						</div>
 					</div>
