@@ -16,7 +16,7 @@ public class UserService implements IUserService{
 	}
 	@Override
 	public void insert(User user) throws SQLException {
-		if(user.getuCreateTime() == null || user.getuLoginName()==null
+		if(user.getuLoginName()==null
 				|| user.getuName().equals("")
 				|| user.getuPwd() == null) {
 			throw new UserServiceException("输入参数错误");
@@ -44,7 +44,7 @@ public class UserService implements IUserService{
 
 	@Override
 	public void updateUser(User user) throws SQLException {
-		if(user.getuCreateTime() == null || user.getuLoginName()==null
+		if(user.getuLoginName()==null
 				|| user.getuName().equals("")
 				|| user.getuPwd() == null) {
 			throw new UserServiceException("输入参数错误");
@@ -65,7 +65,7 @@ public class UserService implements IUserService{
 		if(user.getuLoginName().equals("") || user.getuPwd().equals("")) {
 			throw new UserServiceException("输入参数错");
 		}
-		User user2 = findUserByLogNameAndPwd(user);
+		User user2 = userDao.findUserByLogNameAndPwd(user);
 		if(null == user2) {
 			throw new UserServiceException("输入密码或登录名错误");
 		}

@@ -12,16 +12,16 @@
 	<meta http-equiv="expires" content="0" />    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3" />
 	<meta http-equiv="description" content="This is my page" />
-	<link href="${ctx}/css/css.css" type="text/css" rel="stylesheet" />
-	<link rel="stylesheet" type="text/css" href="${ctx}/js/ligerUI/skins/Aqua/css/ligerui-dialog.css"/>
-	<link href="${ctx}/js/ligerUI/skins/ligerui-icons.css" rel="stylesheet" type="text/css" />
-	<script type="text/javascript" src="${ctx }/js/jquery-1.11.0.js"></script>
-    <script type="text/javascript" src="${ctx }/js/jquery-migrate-1.2.1.js"></script>
-	<script src="${ctx}/js/ligerUI/js/core/base.js" type="text/javascript"></script>
-	<script src="${ctx}/js/ligerUI/js/plugins/ligerDrag.js" type="text/javascript"></script> 
-	<script src="${ctx}/js/ligerUI/js/plugins/ligerDialog.js" type="text/javascript"></script>
-	<script src="${ctx}/js/ligerUI/js/plugins/ligerResizable.jss" type="text/javascript"></script>
-	<link href="${ctx}/css/pager.css" type="text/css" rel="stylesheet" />
+	<link href="${pageContext.request.contextPath}/css/css.css" type="text/css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/js/ligerUI/skins/Aqua/css/ligerui-dialog.css"/>
+	<link href="${pageContext.request.contextPath}/js/ligerUI/skins/ligerui-icons.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.11.0.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-migrate-1.2.1.js"></script>
+	<script src="${pageContext.request.contextPath}/js/ligerUI/js/core/base.js" type="text/javascript"></script>
+	<script src="${pageContext.request.contextPath}/js/ligerUI/js/plugins/ligerDrag.js" type="text/javascript"></script> 
+	<script src="${pageContext.request.contextPath}/js/ligerUI/js/plugins/ligerDialog.js" type="text/javascript"></script>
+	<script src="${pageContext.request.contextPath}/js/ligerUI/js/plugins/ligerResizable.jss" type="text/javascript"></script>
+	<link href="${pageContext.request.contextPath}/css/pager.css" type="text/css" rel="stylesheet" />
 	
 	<script type="text/javascript">
 		$(function(){
@@ -52,7 +52,7 @@
 	 				   if(r){
 	 					   // alert("删除："+ids.get());
 	 					   // 发送请求
-	 					   window.location = "${ctx }/user/removeUser?ids=" + ids.get();
+	 					   window.location = "${pageContext.request.contextPath}/user?method=removeUser&uId=" + ids.get();
 	 				   }
 	 			   });
 	 		   }
@@ -65,9 +65,9 @@
 	<table width="100%" border="0" cellpadding="0" cellspacing="0">
 	  <tr><td height="10"></td></tr>
 	  <tr>
-	    <td width="15" height="32"><img src="${ctx}/images/main_locleft.gif" width="15" height="32"></td>
-		<td class="main_locbg font2"><img src="${ctx}/images/pointer.gif">&nbsp;&nbsp;&nbsp;当前位置：用户管理 &gt; 用户查询</td>
-		<td width="15" height="32"><img src="${ctx}/images/main_locright.gif" width="15" height="32"></td>
+	    <td width="15" height="32"><img src="${pageContext.request.contextPath}/images/main_locleft.gif" width="15" height="32"></td>
+		<td class="main_locbg font2"><img src="${pageContext.request.contextPath}/images/pointer.gif">&nbsp;&nbsp;&nbsp;当前位置：用户管理 &gt; 用户查询</td>
+		<td width="15" height="32"><img src="${pageContext.request.contextPath}/images/main_locright.gif" width="15" height="32"></td>
 	  </tr>
 	</table>
 	
@@ -78,12 +78,12 @@
 		  <table width="100%" border="0" cellpadding="0" cellspacing="10" class="main_tab">
 		    <tr>
 			  <td class="fftd">
-			  	<form name="empform" method="post" id="empform" action="${ctx}/user/selectUser">
+			  	<form name="empform" method="post" id="empform" action="${pageContext.request.contextPath}/user?method=selectUser">
 				    <table width="100%" border="0" cellpadding="0" cellspacing="0">
 					  <tr>
 					    <td class="font3">
-					    	用户名：<input type="text" name="username">
-					    	用户状态：<input type="text" name="status">
+					    	用户名：<input type="text" name="uName">
+					    	用户状态：<input type="text" name="uState">
 					    	 <input type="submit" value="搜索"/>
 					    	<input id="delete" type="button" value="删除"/>
 					    </td>
@@ -109,17 +109,17 @@
 			  <td>创建时间</td>
 			  <td align="center">操作</td>
 			</tr>
-			<c:forEach items="${requestScope.users}" var="user" varStatus="stat">
+			<c:forEach items="${users}" var="user" varStatus="stat">
 				<tr id="data_${stat.index}" align="center" class="main_trbg" onMouseOver="move(this);" onMouseOut="out(this);">
-					<td><input type="checkbox" id="box_${stat.index}" value="${user.id}"></td>
-					 <td>${user.loginname }</td>
-					  <td>${user.password }</td>
-					  <td>${user.username }</td>
-					  <td>${user.status }</td>
-					  <td><f:formatDate value="${user.createDate}" 
+					<td><input type="checkbox" id="box_${stat.index}" value="${user.uId}"></td>
+					 <td>${user.uLoginName }</td>
+					  <td>${user.uPwd }</td>
+					  <td>${user.uName }</td>
+					  <td>${user.uState }</td>
+					  <td><f:formatDate value="${user.uCreateTime}" 
 								type="date" dateStyle="long"/></td>
-					 <td align="center" width="40px;"><a href="${ctx}/user/updateUser?flag=1&id=${user.id}">
-							<img title="修改" src="${ctx}/images/update.gif"/></a>
+					 <td align="center" width="40px;"><a href="${pageContext.request.contextPath}/user?method=updateToJsp&id=${user.uId}">
+							<img title="修改" src="${pageContext.request.contextPath}/images/update.gif"/></a>
 					  </td>
 				</tr>
 			</c:forEach>
@@ -133,7 +133,7 @@
 	  	        pageSize="${requestScope.pageModel.pageSize}" 
 	  	        recordCount="${requestScope.pageModel.recordCount}" 
 	  	        style="digg"
-	  	        submitUrl="${ctx}/employee/selectEmployee?pageIndex={0}"/>
+	  	        submitUrl="${pageContext.request.contextPath}/employee/selectEmployee?pageIndex={0}"/>
 	  </td></tr>
 	</table>
 	<div style="height:10px;"></div>

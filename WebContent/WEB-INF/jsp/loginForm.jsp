@@ -52,8 +52,8 @@
 	   /** 给登录按钮绑定点击事件  */
 	   $("#login-submit-btn").on("click",function(){
 		   /** 校验登录参数 ctrl+K */
-		   var loginname = $("#loginname").val();
-		   var password = $("#password").val();
+		   var uLoginName = $("#loginname").val();
+		   var uPwd = $("#password").val();
 		   
 		   var msg = "";
 		   
@@ -87,7 +87,8 @@
 				style="font-size: 13px;">1.0</span> 系统
 			</a>
 		</div>
-		<form action="login" method="post" id="loginForm">
+		<form action="${pageContext.request.contextPath}/user" method="post" id="loginForm">
+			<input type="hidden" name="method" value="verify"/>
 			<div class="page-body">
 				<img class="page-lock-img"
 					src="${pageContext.request.contextPath}/js/metronic/img/profile/logo2.jpg" alt="">
@@ -108,7 +109,7 @@
 							<div class="input-icon left">
 								<i class="icon-user"></i> <input
 									class="m-wrap placeholder-no-fix" type="text" placeholder="帐号"
-									id="loginname" name="loginname" value="${loginname}">
+									id="loginname" name="uLoginName" value="${uLoginName}">
 							</div>
 						</div>
 					</div>
@@ -117,8 +118,8 @@
 							<div class="input-icon left">
 								<i class="icon-lock"></i> <input
 									class="m-wrap placeholder-no-fix" type="password"
-									placeholder="密码" id="password" name="password"
-									value="${password}">
+									placeholder="密码" id="password" name="uPwd"
+									value="${uPwd}">
 							</div>
 						</div>
 					</div>

@@ -3,7 +3,7 @@
      <!--驱动-->
      <property name="driverClass">com.mysql.jdbc.Driver</property>
      <!--访问的url-->
-     <property name="jdbcUrl">jdbc:mysql://localhost:3306/booksys?useSSL=false</property>
+     <property name="jdbcUrl">jdbc:mysql://localhost:3306/hrsys?useSSL=false</property>
      <!--用户-->
      <property name="user">root</property>
      <!--密码-->

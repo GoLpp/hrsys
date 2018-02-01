@@ -15,7 +15,7 @@ public class ObjectUtils {
 	}
 	
 	public static <T> T getObject(String className) throws ClassNotFoundException, InstantiationException, IllegalAccessException{
-		Class<T> class1 =   (Class<T>) Class.forName(properties.getProperty(className));
+		Class<T> class1 = (Class<T>) Class.forName(properties.getProperty(className));
 		T t = (T) class1.newInstance();
 		return t;
 	}
