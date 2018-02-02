@@ -73,5 +73,10 @@ public class UserDao implements IUserDao{
 		String sql = "select *from t_user where uLoginName=? and uPwd=? and uState<>0";
 		return JdbcUtils.getQueryRunner().query(sql, new BeanHandler<>(User.class),user.getuLoginName(),user.getuPwd());
 	}
-
+	
+	@Override
+	public User findAnyUserById(User user) throws SQLException {
+		String sql = "select *from t_user where uId=?";
+		return JdbcUtils.getQueryRunner().query(sql, new BeanHandler<>(User.class),user.getuId());
+	}	
 }

@@ -89,5 +89,7 @@ public interface IUserDao {
 	 * @return User    ∑µªÿ¿‡–Õ 
 	 * @throws
 	 */
-	User findUserByLogNameAndPwd(User user) throws SQLException;	
+	User findUserByLogNameAndPwd(User user) throws SQLException;
+
+	User findAnyUserById(User user) throws SQLException;	
 }

@@ -1,6 +1,7 @@
 package com.hrsys.pojo;
 
 import java.io.Serializable;
+import java.util.Date;
 /**
  * 
  * @ClassName: Notice 
@@ -13,14 +14,16 @@ public class Notice implements Serializable{
 	private Integer nId;         //公告id
 	private String nName;        //公告主题
 	private String nContent;     //公告内容
-	private String nCreateTime;  //公告创建时间
+	private Date nCreateTime;  //公告创建时间
 	private Integer uId;         //创建公告人的id
 	private Integer nState;      //公告状态
+	private User user;           //用户对象
 	public Notice() {
 		super();
 		
 	}
-	public Notice(Integer nId, String nName, String nContent, String nCreateTime, Integer uId, Integer nState) {
+	public Notice(Integer nId, String nName, String nContent, Date nCreateTime, Integer uId, Integer nState,
+			User user) {
 		super();
 		this.nId = nId;
 		this.nName = nName;
@@ -28,6 +31,7 @@ public class Notice implements Serializable{
 		this.nCreateTime = nCreateTime;
 		this.uId = uId;
 		this.nState = nState;
+		this.user = user;
 	}
 	public Integer getnId() {
 		return nId;
@@ -47,10 +51,10 @@ public class Notice implements Serializable{
 	public void setnContent(String nContent) {
 		this.nContent = nContent;
 	}
-	public String getnCreateTime() {
+	public Date getnCreateTime() {
 		return nCreateTime;
 	}
-	public void setnCreateTime(String nCreateTime) {
+	public void setnCreateTime(Date nCreateTime) {
 		this.nCreateTime = nCreateTime;
 	}
 	public Integer getuId() {
@@ -65,9 +69,15 @@ public class Notice implements Serializable{
 	public void setnState(Integer nState) {
 		this.nState = nState;
 	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
 	@Override
 	public String toString() {
 		return "Notice [nId=" + nId + ", nName=" + nName + ", nContent=" + nContent + ", nCreateTime=" + nCreateTime
-				+ ", uId=" + uId + ", nState=" + nState + "]";
+				+ ", uId=" + uId + ", nState=" + nState + ", user=" + user + "]";
 	}
 }
