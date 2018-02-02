@@ -118,7 +118,7 @@
 					  <td>${user.uState }</td>
 					  <td><f:formatDate value="${user.uCreateTime}" 
 								type="date" dateStyle="long"/></td>
-					 <td align="center" width="40px;"><a href="${pageContext.request.contextPath}/user?method=updateToJsp">
+					 <td align="center" width="40px;"><a href="${pageContext.request.contextPath}/user?method=updateToJsp&uId=${user.uId}">
 							<img title="修改" src="${pageContext.request.contextPath}/images/update.gif"/></a>
 					  </td>
 				</tr>

@@ -70,7 +70,6 @@
 		    			<td class="font3 fftd">部门名称：<input type="text" name="dName" id="name" size="20" value="${dept.dName}"/></td>
 		    			<td class="font3 fftd">详细描述：<input type="text" name="dDes" id="remark" size="20" value="${dept.dDes}"/></td>
 		    		</tr>
-		    			
 		    	</table>
 		    </td></tr>
 			<tr><td class="main_tdbor"></td></tr>

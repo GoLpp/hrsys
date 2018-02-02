@@ -53,7 +53,7 @@ public class UserServlet extends HttpServlet{
 		if(parameter.equals("verify")) {
 			login(req, resp, user);
 		}else if("exit".equals(parameter)) {
-			req.removeAttribute("user");
+			req.getSession().removeAttribute("user");
 			path = "WEB-INF/jsp/loginForm.jsp"; 
 			jumpPage(path, req, resp); 
 		}else if("findAllUser".equals(parameter)) {
@@ -62,8 +62,7 @@ public class UserServlet extends HttpServlet{
 			path = "WEB-INF/jsp/user/showAddUser.jsp";
 			jumpPage(path, req, resp);
 		}else if("updateToJsp".equals(parameter)) {
-			path = "WEB-INF/jsp/user/showUpdateUser.jsp";
-			jumpPage(path, req, resp);
+			updateToJsp(req, resp, user);
 		}else if("selectUser".equals(parameter)) {
 			selectUser(req, resp, path);
 		}else if("removeUser".equals(parameter)) {
@@ -71,16 +70,56 @@ public class UserServlet extends HttpServlet{
 		}else if("updateUser".equals(parameter)) {
 			updateUser(req, resp, path);
 		}else if("addUser".equals(parameter)) {
-			User user2 = null;
-			try {
-				user2 = ObjectWraperUtils.getObject(req, User.class);
-				userService.insert(user2);
-				path = "user?method=findAllUser";
-			} catch (InstantiationException | UserServiceException | IllegalAccessException | InvocationTargetException | SQLException e) {
-				e.printStackTrace();
-			}
-			jumpPage(path, req, resp);
+			addUser(req, resp, path);
 		}
+	}
+	/**
+	 * 
+	 * @Title: addUser 
+	 * @Description: 添加用户 
+	 * @param @param req
+	 * @param @param resp
+	 * @param @param path
+	 * @param @throws ServletException
+	 * @param @throws IOException  参数说明 
+	 * @return void    返回类型 
+	 * @throws
+	 */
+	private void addUser(HttpServletRequest req, HttpServletResponse resp, String path)
+			throws ServletException, IOException {
+		User user2 = null;
+		try {
+			user2 = ObjectWraperUtils.getObject(req, User.class);
+			userService.insert(user2);
+			path = "user?method=findAllUser";
+		} catch (InstantiationException | UserServiceException | IllegalAccessException | InvocationTargetException | SQLException e) {
+			e.printStackTrace();
+		}
+		jumpPage(path, req, resp);
+	}
+	/**
+	 * 
+	 * @Title: updateToJsp 
+	 * @Description: 跳转到修改页面 
+	 * @param @param req
+	 * @param @param resp
+	 * @param @param user
+	 * @param @throws ServletException
+	 * @param @throws IOException  参数说明 
+	 * @return void    返回类型 
+	 * @throws
+	 */
+	private void updateToJsp(HttpServletRequest req, HttpServletResponse resp, User user)
+			throws ServletException, IOException {
+		String path;
+		path = "WEB-INF/jsp/user/showUpdateUser.jsp";
+		try {
+			user = userService.findUserById(user);
+			req.setAttribute("user", user);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		jumpPage(path, req, resp);
 	}
 	
 	/**
@@ -100,12 +139,19 @@ public class UserServlet extends HttpServlet{
 		User user2 = null;
 		try {
 			user2 = ObjectWraperUtils.getObject(req, User.class);
-			userService.updateUser(user2);
-			path = "user?method=findAllUser";
+			User user = (User) req.getSession().getAttribute("user");
+			if(user.getuId().intValue() == user2.getuId().intValue()) {
+				userService.updateUser(user2);
+				path = "WEB-INF/jsp/loginForm.jsp";
+				jumpPage(path, req, resp);
+			}else{
+				userService.updateUser(user2);
+				path = "user?method=findAllUser";
+				jumpPage(path, req, resp);
+			}
 		} catch (InstantiationException | UserServiceException | IllegalAccessException | InvocationTargetException | SQLException e) {
 			e.printStackTrace();
 		}
-		jumpPage(path, req, resp);
 	}
 	/**
 	 * 
@@ -124,12 +170,17 @@ public class UserServlet extends HttpServlet{
 		User user2 = null;
 		try {
 			user2 = ObjectWraperUtils.getObject(req, User.class);
-			userService.removeUser(user2);
-			path = "user?method=findAllUser";
+			User user = (User) req.getSession().getAttribute("user");
+			if(user.getuId().intValue() == user2.getuId().intValue()) {
+				jumpPage("user?method=findAllUser", req, resp);
+			}else{
+				userService.removeUser(user2);
+				path = "user?method=findAllUser";
+				jumpPage(path, req, resp);
+			}
 		} catch (InstantiationException | IllegalAccessException | UserServiceException |InvocationTargetException | SQLException e) {
 			e.printStackTrace();
 		}
-		jumpPage(path, req, resp);
 	}
 	/**
 	 * 
