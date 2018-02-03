@@ -20,9 +20,10 @@
 	<script src="${pageContext.request.contextPath }/js/ligerUI/js/core/base.js" type="text/javascript"></script>
 	<script src="${pageContext.request.contextPath }/js/ligerUI/js/plugins/ligerDrag.js" type="text/javascript"></script> 
 	<script src="${pageContext.request.contextPath }/js/ligerUI/js/plugins/ligerDialog.js" type="text/javascript"></script>
-	<script src="${pageContext.request.contextPath }/js/ligerUI/js/plugins/ligerResizable.jss" type="text/javascript"></script>
+	<script src="${pageContext.request.contextPath }/js/ligerUI/js/plugins/ligerResizable.js" type="text/javascript"></script>
 	<link href="${pageContext.request.contextPath }/css/pager.css" type="text/css" rel="stylesheet" />
-
+	<script src="${pageContext.request.contextPath }/js/jquery-3.2.1.min.js" type="text/javascript"></script> 
+	
 	<script type="text/javascript">
 	       $(function(){
 	    	   /** 获取上一次选中的部门数据 */
@@ -65,19 +66,33 @@
 	    		   }
 	    	   })
 	       })
+	      
 	      //ajax
-	      function addOption() {
-	    	  var dept = document.getElementById("dept");
-	    	  var url = "${pageContext.request.contextPath}/ajax";
-	 	      $.get(url,function(data,status) {
-	 	    	 var depts = eval(data);
-	 	    	 for(var i=0; i<depts.length; i++) {
-	 	    		 var option = document.createElement('option');
-	 	    		 option.innerText = depts[i].dName;
-	 	    		 dept.appendChild(option);
-	 	    	 }
-	 	      });   
-	      }
+	      window.onload = function() {
+				var url = '${pageContext.request.contextPath}/deptAjax?method=getDepts';
+	    		var dept = document.getElementById('dept');
+	    		$.get(url,function(data,status) {
+	    			var data1 = eval(data);
+	    			for(var i=0;i<data1.length; i++) {
+	    				var option = document.createElement('option');
+	    				option.innerText = data1[i].dName;
+	    				option.value = data1[i].dName;
+	    				dept.appendChild(option);
+	    			}
+	    		});
+	    		
+	    		var url2 = '${pageContext.request.contextPath}/jobAjax?method=getJob';
+	    		var job = document.getElementById('job');
+	    		$.get(url2,function(data,status) {
+	    			var jobs = eval(data);
+	    			for(var i=0;i<jobs.length;i++) {
+	    				var option = document.createElement('option');
+	    				option.innerText = jobs[i].jName;
+	    				option.value = jobs[i].jName;
+	    				job.appendChild(option);
+	    			}
+	    		});
+	      	}
 	</script>
 </head>
 <body>
@@ -98,16 +113,16 @@
 		  <table width="100%" border="0" cellpadding="0" cellspacing="10" class="main_tab">
 		    <tr>
 			  <td class="fftd">
-			  	<form name="empform" method="post" id="empform" action="${pageContext.request.contextPath }/employee/selectEmployee">
+			  	<form name="empform" method="post" id="empform" action="${pageContext.request.contextPath }/emps?method=select">
 				    <table width="100%" border="0" cellpadding="0" cellspacing="0">
 					  <tr>
 					    <td class="font3">
 					    	职位：
-							    <select name="job" style="width:143px;">
+							    <select id="job" name="sJobName" style="width:143px;">
 					    			<option value="0">--请选择职位--</option>
-					    			<c:forEach items="${jobs }" var="job">
+					    			<%-- <c:forEach items="${jobs }" var="job">
 					    				<option value="${job.jId}">${job.jName }</option>
-					    			</c:forEach>
+					    			</c:forEach> --%>
 					    		</select>
 					    	姓名：<input type="text" name="eName">
 					    	身份证号码：<input type="text" name="eIdCard" maxlength="18">
@@ -121,12 +136,12 @@
 					    			<option value="1">男</option>
 					    			<option value="2">女</option>
 					    		</select>
-					    	手机：<input type="text" name="phone">
-					    	所属部门：<select id="dept" name="dept" style="width:100px;">
+					    	手机：<input type="text" name="eTelNum">
+					    	所属部门：<select id="dept" name="sDeptName" style="width:100px;">
 								   <option value="0">--部门选择--</option>
-								   <c:forEach items="${depts }" var="dept">
+								   <%-- <c:forEach items="${depts }" var="dept">
 					    				<option value="${dept.dId }">${dept.dName }</option>
-					    			</c:forEach>
+					    			</c:forEach> --%>
 							</select>&nbsp;
 					    	<input type="submit" value="搜索"/>
 					    	<input id="delete" type="button" value="删除"/>

@@ -25,12 +25,16 @@ public class Employee implements Serializable{
 	private Integer eState;   //员工状态
 	private Job job;          //员工职位
 	private Department dept;  //员工所属部门
+	
+	private String sJobName;  //职位名
+	private String sDeptName; //部门名
 	public Employee() {
 		super();
 		
 	}
 	public Employee(Integer eId, String eName, Integer eGender, String eTelNum, String eEmail, Integer jId, String eStu,
-			Integer dId, String eIdCard, Date eCreateTime, String eAddress, Integer eState, Job job, Department dept) {
+			Integer dId, String eIdCard, Date eCreateTime, String eAddress, Integer eState, Job job, Department dept,
+			String sJobName, String sDeptName) {
 		super();
 		this.eId = eId;
 		this.eName = eName;
@@ -46,6 +50,8 @@ public class Employee implements Serializable{
 		this.eState = eState;
 		this.job = job;
 		this.dept = dept;
+		this.sJobName = sJobName;
+		this.sDeptName = sDeptName;
 	}
 	public Integer geteId() {
 		return eId;
@@ -131,11 +137,23 @@ public class Employee implements Serializable{
 	public void setDept(Department dept) {
 		this.dept = dept;
 	}
+	public String getsJobName() {
+		return sJobName;
+	}
+	public void setsJobName(String sJobName) {
+		this.sJobName = sJobName;
+	}
+	public String getsDeptName() {
+		return sDeptName;
+	}
+	public void setsDeptName(String sDeptName) {
+		this.sDeptName = sDeptName;
+	}
 	@Override
 	public String toString() {
 		return "Employee [eId=" + eId + ", eName=" + eName + ", eGender=" + eGender + ", eTelNum=" + eTelNum
 				+ ", eEmail=" + eEmail + ", jId=" + jId + ", eStu=" + eStu + ", dId=" + dId + ", eIdCard=" + eIdCard
 				+ ", eCreateTime=" + eCreateTime + ", eAddress=" + eAddress + ", eState=" + eState + ", job=" + job
-				+ ", dept=" + dept + "]";
+				+ ", dept=" + dept + ", sJobName=" + sJobName + ", sDeptName=" + sDeptName + "]";
 	}
 }

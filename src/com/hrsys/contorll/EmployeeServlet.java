@@ -15,6 +15,7 @@ import com.hrsys.pojo.Employee;
 import com.hrsys.service.IEmployeeService;
 import com.hrsys.utils.ObjectUtils;
 import com.hrsys.utils.ObjectWraperUtils;
+
 @WebServlet(urlPatterns="/emps")
 public class EmployeeServlet extends HttpServlet{
 	private IEmployeeService employeeService = null;
@@ -36,16 +37,34 @@ public class EmployeeServlet extends HttpServlet{
 			System.out.println("对象封装失败");
 		}
 		
+		jumpDecide(req, resp, method,employ);
+	}
+	private void jumpDecide(HttpServletRequest req, HttpServletResponse resp, String method, Employee employee) {
 		if("findAllEmployee".equals(method)) {
-			try {
-				List<Employee> employees = employeeService.findAllEmployee();
-				req.setAttribute("employees", employees);
-				path = "WEB-INF/jsp/employee/employee.jsp";
-				jumpPage(req, resp, path);
-			} catch (SQLException e) {
-				path = "WEB-INF/jsp/main.jsp";
-				jumpPage(req, resp, path);
-			}
+			findAllEmployee(req, resp);
+		}else if("select".equals(method)) {
+			System.out.println("select");
+		}
+	}
+	/**
+	 * 
+	 * @Title: findAllEmployee 
+	 * @Description: 查找所有的用户
+	 * @param @param req
+	 * @param @param resp  参数说明 
+	 * @return void    返回类型 
+	 * @throws
+	 */
+	private void findAllEmployee(HttpServletRequest req, HttpServletResponse resp) {
+		String path;
+		try {
+			List<Employee> employees = employeeService.findAllEmployee();
+			req.setAttribute("employees", employees);
+			path = "WEB-INF/jsp/employee/employee.jsp";
+			jumpPage(req, resp, path);
+		} catch (SQLException e) {
+			path = "WEB-INF/jsp/main.jsp";
+			jumpPage(req, resp, path);
 		}
 	}
 	
@@ -68,6 +87,6 @@ public class EmployeeServlet extends HttpServlet{
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		doGet(null, resp);
+		doGet(req, resp);
 	}
 }

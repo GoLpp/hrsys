@@ -1,7 +1,6 @@
 package com.hrsys.contorll;
 
 import java.io.IOException;
-import java.nio.file.Path;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -12,9 +11,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.hrsys.pojo.Department;
+import com.hrsys.pojo.Job;
 import com.hrsys.service.IDepartmentService;
+import com.hrsys.service.IJobService;
 import com.hrsys.utils.ObjectUtils;
-@WebServlet(urlPatterns="/ajax")
+
+import net.sf.json.JSONArray;
+@WebServlet(urlPatterns="/deptAjax")
 public class AjaxServlet extends HttpServlet{
 	private IDepartmentService deptService = null;
 	public AjaxServlet() {
@@ -29,14 +32,28 @@ public class AjaxServlet extends HttpServlet{
 		String method = req.getParameter("method");
 		String path = null;
 		if("getDepts".equals(method)) {
-			try {
-				List<Department> depts = deptService.findAllDepartment();
-				req.setAttribute("depts", depts);
-				path = "WEB-INF/jsp/employee/employee.jsp";
-				jumpPage(req, resp, path);
-			} catch (SQLException e) {
-				System.out.println("ajax失败" + e.getMessage());
-			}
+			getDepts(resp);
+		}
+	}
+	/**
+	 * 
+	 * @Title: getDepts 
+	 * @Description: ajax获得depts
+	 * @param @param resp
+	 * @param @throws IOException  参数说明 
+	 * @return void    返回类型 
+	 * @throws
+	 */
+	private void getDepts(HttpServletResponse resp) throws IOException {
+		try {
+			System.out.println("ajax");
+			resp.setContentType("text/html;charset=uft8");
+			resp.setCharacterEncoding("UTF-8");
+			List<Department> departments = deptService.findAllDepartment();
+			JSONArray depts = JSONArray.fromObject(departments);
+			resp.getWriter().print(depts.toString());
+		} catch (SQLException e) {
+			System.out.println("ajax失败" + e.getMessage());
 		}
 	}
 	
