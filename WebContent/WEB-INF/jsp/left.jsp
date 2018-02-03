@@ -69,7 +69,7 @@
 		  <tr><td id="navbg3" class="left_nav_closed" ><div class="font1">员工管理</div></td></tr>
 		  <tr valign="top" id="submenu3" style="display: none">
 		    <td class="left_nav_bgshw" height="50">
-			  <p class="left_nav_link"><img src="${pageContext.request.contextPath}/images/left_nav_arrow.gif">&nbsp;&nbsp;<a href="${pageContext.request.contextPath }/employee/selectEmployee" target="main">员工查询</a></img></p>
+			  <p class="left_nav_link"><img src="${pageContext.request.contextPath}/images/left_nav_arrow.gif">&nbsp;&nbsp;<a href="${pageContext.request.contextPath }/emps?method=findAllEmployee" target="main">员工查询</a></img></p>
 			  <p class="left_nav_link"><img src="${pageContext.request.contextPath}/images/left_nav_arrow.gif">&nbsp;&nbsp;<a href="${pageContext.request.contextPath }/employee/addEmployee?flag=1" target="main">添加员工</a></img></p>
 			</td>
 		  </tr>

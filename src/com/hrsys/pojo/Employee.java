@@ -16,19 +16,21 @@ public class Employee implements Serializable{
 	private Integer eGender;  //员工性别
 	private String eTelNum;   //员工手机号码
 	private String eEmail;    //员工邮箱地址
-	private String jId;       //职位id
+	private Integer jId;       //职位id
 	private String eStu;      //学历
 	private Integer dId;      //所属部门id
 	private String eIdCard;   //员工身份证号码
 	private Date eCreateTime; //员工创建日期
 	private String eAddress;  //员工家庭住址
-	private Integer eState;
+	private Integer eState;   //员工状态
+	private Job job;          //员工职位
+	private Department dept;  //员工所属部门
 	public Employee() {
 		super();
 		
 	}
-	public Employee(Integer eId, String eName, Integer eGender, String eTelNum, String eEmail, String jId, String eStu,
-			Integer dId, String eIdCard, Date eCreateTime, String eAddress, Integer eState) {
+	public Employee(Integer eId, String eName, Integer eGender, String eTelNum, String eEmail, Integer jId, String eStu,
+			Integer dId, String eIdCard, Date eCreateTime, String eAddress, Integer eState, Job job, Department dept) {
 		super();
 		this.eId = eId;
 		this.eName = eName;
@@ -42,6 +44,8 @@ public class Employee implements Serializable{
 		this.eCreateTime = eCreateTime;
 		this.eAddress = eAddress;
 		this.eState = eState;
+		this.job = job;
+		this.dept = dept;
 	}
 	public Integer geteId() {
 		return eId;
@@ -73,10 +77,10 @@ public class Employee implements Serializable{
 	public void seteEmail(String eEmail) {
 		this.eEmail = eEmail;
 	}
-	public String getjId() {
+	public Integer getjId() {
 		return jId;
 	}
-	public void setjId(String jId) {
+	public void setjId(Integer jId) {
 		this.jId = jId;
 	}
 	public String geteStu() {
@@ -109,17 +113,29 @@ public class Employee implements Serializable{
 	public void seteAddress(String eAddress) {
 		this.eAddress = eAddress;
 	}
-	
 	public Integer geteState() {
 		return eState;
 	}
 	public void seteState(Integer eState) {
 		this.eState = eState;
 	}
+	public Job getJob() {
+		return job;
+	}
+	public void setJob(Job job) {
+		this.job = job;
+	}
+	public Department getDept() {
+		return dept;
+	}
+	public void setDept(Department dept) {
+		this.dept = dept;
+	}
 	@Override
 	public String toString() {
 		return "Employee [eId=" + eId + ", eName=" + eName + ", eGender=" + eGender + ", eTelNum=" + eTelNum
 				+ ", eEmail=" + eEmail + ", jId=" + jId + ", eStu=" + eStu + ", dId=" + dId + ", eIdCard=" + eIdCard
-				+ ", eCreateTime=" + eCreateTime + ", eAddress=" + eAddress + ", eState=" + eState + "]";
+				+ ", eCreateTime=" + eCreateTime + ", eAddress=" + eAddress + ", eState=" + eState + ", job=" + job
+				+ ", dept=" + dept + "]";
 	}
 }
