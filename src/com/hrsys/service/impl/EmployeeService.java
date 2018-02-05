@@ -41,7 +41,9 @@ public class EmployeeService implements IEmployeeService{
 
 	@Override
 	public List<Employee> findEmployeeByCondition(Employee employee) throws SQLException {
-		return employDao.findEmployeeByCondition(employee);
+		List<Employee> employees = employDao.findEmployeeByCondition(employee);
+		List<Employee> returnEmployees = new ArrayList<>();
+		return getJobAndDept(employees, returnEmployees);
 	}
 
 	@Override
@@ -62,16 +64,16 @@ public class EmployeeService implements IEmployeeService{
 				|| employee.geteName().equals("")
 				|| employee.geteStu().equals("")
 				|| employee.geteTelNum().equals("")
-				|| employee.getjId() == null) {
+				|| employee.getjId() == null
+				||employee.geteAddress() == null) {
 			throw new EmployeeException(" ‰»Î≤Œ ˝¥ÌŒÛ");
 		}
-		employDao.removeEmployee(employee);
+		employDao.update(employee);
 	}
 
 	@Override
 	public void insertEmployee(Employee employee) throws SQLException {
 		if(employee.getdId() == null || employee.geteAddress().equals("")
-				|| employee.geteCreateTime() == null 
 				|| employee.geteEmail().equals("") 
 				|| employee.geteGender() == null
 				|| employee.geteIdCard().equals("")

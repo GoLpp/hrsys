@@ -26,15 +26,13 @@ public class Employee implements Serializable{
 	private Job job;          //员工职位
 	private Department dept;  //员工所属部门
 	
-	private String sJobName;  //职位名
-	private String sDeptName; //部门名
 	public Employee() {
 		super();
 		
 	}
+
 	public Employee(Integer eId, String eName, Integer eGender, String eTelNum, String eEmail, Integer jId, String eStu,
-			Integer dId, String eIdCard, Date eCreateTime, String eAddress, Integer eState, Job job, Department dept,
-			String sJobName, String sDeptName) {
+			Integer dId, String eIdCard, Date eCreateTime, String eAddress, Integer eState, Job job, Department dept) {
 		super();
 		this.eId = eId;
 		this.eName = eName;
@@ -50,110 +48,125 @@ public class Employee implements Serializable{
 		this.eState = eState;
 		this.job = job;
 		this.dept = dept;
-		this.sJobName = sJobName;
-		this.sDeptName = sDeptName;
 	}
+
 	public Integer geteId() {
 		return eId;
 	}
+
 	public void seteId(Integer eId) {
 		this.eId = eId;
 	}
+
 	public String geteName() {
 		return eName;
 	}
+
 	public void seteName(String eName) {
 		this.eName = eName;
 	}
+
 	public Integer geteGender() {
 		return eGender;
 	}
+
 	public void seteGender(Integer eGender) {
 		this.eGender = eGender;
 	}
+
 	public String geteTelNum() {
 		return eTelNum;
 	}
+
 	public void seteTelNum(String eTelNum) {
 		this.eTelNum = eTelNum;
 	}
+
 	public String geteEmail() {
 		return eEmail;
 	}
+
 	public void seteEmail(String eEmail) {
 		this.eEmail = eEmail;
 	}
+
 	public Integer getjId() {
 		return jId;
 	}
+
 	public void setjId(Integer jId) {
 		this.jId = jId;
 	}
+
 	public String geteStu() {
 		return eStu;
 	}
+
 	public void seteStu(String eStu) {
 		this.eStu = eStu;
 	}
+
 	public Integer getdId() {
 		return dId;
 	}
+
 	public void setdId(Integer dId) {
 		this.dId = dId;
 	}
+
 	public String geteIdCard() {
 		return eIdCard;
 	}
+
 	public void seteIdCard(String eIdCard) {
 		this.eIdCard = eIdCard;
 	}
+
 	public Date geteCreateTime() {
 		return eCreateTime;
 	}
+
 	public void seteCreateTime(Date eCreateTime) {
 		this.eCreateTime = eCreateTime;
 	}
+
 	public String geteAddress() {
 		return eAddress;
 	}
+
 	public void seteAddress(String eAddress) {
 		this.eAddress = eAddress;
 	}
+
 	public Integer geteState() {
 		return eState;
 	}
+
 	public void seteState(Integer eState) {
 		this.eState = eState;
 	}
+
 	public Job getJob() {
 		return job;
 	}
+
 	public void setJob(Job job) {
 		this.job = job;
 	}
+
 	public Department getDept() {
 		return dept;
 	}
+
 	public void setDept(Department dept) {
 		this.dept = dept;
 	}
-	public String getsJobName() {
-		return sJobName;
-	}
-	public void setsJobName(String sJobName) {
-		this.sJobName = sJobName;
-	}
-	public String getsDeptName() {
-		return sDeptName;
-	}
-	public void setsDeptName(String sDeptName) {
-		this.sDeptName = sDeptName;
-	}
+
 	@Override
 	public String toString() {
 		return "Employee [eId=" + eId + ", eName=" + eName + ", eGender=" + eGender + ", eTelNum=" + eTelNum
 				+ ", eEmail=" + eEmail + ", jId=" + jId + ", eStu=" + eStu + ", dId=" + dId + ", eIdCard=" + eIdCard
 				+ ", eCreateTime=" + eCreateTime + ", eAddress=" + eAddress + ", eState=" + eState + ", job=" + job
-				+ ", dept=" + dept + ", sJobName=" + sJobName + ", sDeptName=" + sDeptName + "]";
+				+ ", dept=" + dept + "]";
 	}
 }

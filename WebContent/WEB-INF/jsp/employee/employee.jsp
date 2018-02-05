@@ -60,7 +60,7 @@
 	    				   if(r){
 	    					   // alert("删除："+ids.get());
 	    					   // 发送请求
-	    					   window.location = "${pageContext.request.contextPath }/employee/removeEmployee?ids=" + ids.get();
+	    					   window.location = "${pageContext.request.contextPath }/emps?method=removeEmployee&eId=" + ids.get();
 	    				   }
 	    			   });
 	    		   }
@@ -76,7 +76,7 @@
 	    			for(var i=0;i<data1.length; i++) {
 	    				var option = document.createElement('option');
 	    				option.innerText = data1[i].dName;
-	    				option.value = data1[i].dName;
+	    				option.value = data1[i].dId;
 	    				dept.appendChild(option);
 	    			}
 	    		});
@@ -88,7 +88,7 @@
 	    			for(var i=0;i<jobs.length;i++) {
 	    				var option = document.createElement('option');
 	    				option.innerText = jobs[i].jName;
-	    				option.value = jobs[i].jName;
+	    				option.value = jobs[i].jId;
 	    				job.appendChild(option);
 	    			}
 	    		});
@@ -113,12 +113,12 @@
 		  <table width="100%" border="0" cellpadding="0" cellspacing="10" class="main_tab">
 		    <tr>
 			  <td class="fftd">
-			  	<form name="empform" method="post" id="empform" action="${pageContext.request.contextPath }/emps?method=select">
+			  	<form name="empform" method="post" id="empform" action="${pageContext.request.contextPath }/emps?method=selectByCondition">
 				    <table width="100%" border="0" cellpadding="0" cellspacing="0">
 					  <tr>
 					    <td class="font3">
 					    	职位：
-							    <select id="job" name="sJobName" style="width:143px;">
+							    <select id="job" name="jId" style="width:143px;">
 					    			<option value="0">--请选择职位--</option>
 					    			<%-- <c:forEach items="${jobs }" var="job">
 					    				<option value="${job.jId}">${job.jName }</option>
@@ -137,7 +137,7 @@
 					    			<option value="2">女</option>
 					    		</select>
 					    	手机：<input type="text" name="eTelNum">
-					    	所属部门：<select id="dept" name="sDeptName" style="width:100px;">
+					    	所属部门：<select id="dept" name="dId" style="width:100px;">
 								   <option value="0">--部门选择--</option>
 								   <%-- <c:forEach items="${depts }" var="dept">
 					    				<option value="${dept.dId }">${dept.dName }</option>
@@ -194,7 +194,7 @@
 					  	<f:formatDate value="${employee.eCreateTime}" 
 								type="date" dateStyle="long"/>
 					  </td>
-					  <td align="center" width="40px;"><a href="${pageContext.request.contextPath }/employee/updateEmployee?flag=1&id=${employee.eId}">
+					  <td align="center" width="40px;"><a href="${pageContext.request.contextPath }/send?method=updateEmployeeToJsp&eId=${employee.eId}">
 							<img title="修改" src="${pageContext.request.contextPath }/images/update.gif"/></a>
 					  </td>
 				</tr>

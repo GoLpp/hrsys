@@ -10,17 +10,17 @@
 	<meta http-equiv="expires" content="0" />    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3" />
 	<meta http-equiv="description" content="This is my page" />
-	<link href="${ctx}/css/css.css" type="text/css" rel="stylesheet" />
-	<link rel="stylesheet" type="text/css" href="${ctx}/js/ligerUI/skins/Aqua/css/ligerui-dialog.css"/>
-	<link href="${ctx}/js/ligerUI/skins/ligerui-icons.css" rel="stylesheet" type="text/css" />
-	<script type="text/javascript" src="${ctx }/js/jquery-1.11.0.js"></script>
-    <script type="text/javascript" src="${ctx }/js/jquery-migrate-1.2.1.js"></script>
-	<script src="${ctx}/js/ligerUI/js/core/base.js" type="text/javascript"></script>
-	<script src="${ctx}/js/ligerUI/js/plugins/ligerDrag.js" type="text/javascript"></script> 
-	<script src="${ctx}/js/ligerUI/js/plugins/ligerDialog.js" type="text/javascript"></script>
-	<script src="${ctx}/js/ligerUI/js/plugins/ligerResizable.jss" type="text/javascript"></script>
-	<link href="${ctx}/css/pager.css" type="text/css" rel="stylesheet" />
-	<script language="javascript" type="text/javascript" src="${ctx }/js/My97DatePicker/WdatePicker.js"></script>
+	<link href="${pageContext.request.contextPath}/css/css.css" type="text/css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/js/ligerUI/skins/Aqua/css/ligerui-dialog.css"/>
+	<link href="${pageContext.request.contextPath}/js/ligerUI/skins/ligerui-icons.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.11.0.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-migrate-1.2.1.js"></script>
+	<script src="${pageContext.request.contextPath}/js/ligerUI/js/core/base.js" type="text/javascript"></script>
+	<script src="${pageContext.request.contextPath}/js/ligerUI/js/plugins/ligerDrag.js" type="text/javascript"></script> 
+	<script src="${pageContext.request.contextPath}/js/ligerUI/js/plugins/ligerDialog.js" type="text/javascript"></script>
+	<script src="${pageContext.request.contextPath}/js/ligerUI/js/plugins/ligerResizable.js" type="text/javascript"></script>
+	<link href="${pageContext.request.contextPath}/css/pager.css" type="text/css" rel="stylesheet" />
+	<script language="javascript" type="text/javascript" src="${pageContext.request.contextPath}/js/My97DatePicker/WdatePicker.js"></script>
 	<script type="text/javascript">
 	
 	 
@@ -66,7 +66,7 @@
 				}else if (!/^1[3|5|8]\d{9}$/.test($.trim(phone.val()))){
 					msg = "手机号码格式不正确！";
 					phone.focus();
-				}else if ($.trim(tel.val()) == ""){
+				}/* else if ($.trim(tel.val()) == ""){
 					msg = "电话号码不能为空！";
 					tel.focus();
 				}else if (!/^0\d{2,3}-?\d{7,8}$/.test($.trim(tel.val()))){
@@ -81,10 +81,10 @@
 				}else if (!/^\d{6,}$/.test($.trim(qqNum.val()))){
 					msg = "QQ号码格式不正确！";
 					qqNum.focus();
-				}else if ($.trim(address.val()) == ""){
+				} */else if ($.trim(address.val()) == ""){
 					msg = "地址不能为空！";
 					address.focus();
-				}else if ($.trim(postCode.val()) == ""){
+				}/* else if ($.trim(postCode.val()) == ""){
 					msg = "邮政编码不能为空！";
 					postCode.focus();
 				}else if (!/^[1-9]\d{5}$/.test($.trim(postCode.val()))){
@@ -106,7 +106,7 @@
 				}else if ($.trim(hobby.val()) == ""){
 					msg = "爱好不能为空！";
 					hobby.focus();
-				}
+				} */
 				if (msg != ""){
 					$.ligerDialog.error(msg);
 					return false;
@@ -116,7 +116,32 @@
 				$("#employeeForm").submit();
 			});
 	    });
-		
+	    window.onload = function() {
+		var url = '${pageContext.request.contextPath}/deptAjax?method=getDepts';
+ 		var dept = document.getElementById('dept');
+ 		$.get(url,function(data,status) {
+ 			var data1 = eval(data);
+ 			for(var i=0;i<data1.length; i++) {
+ 				var option = document.createElement('option');
+ 				option.innerText = data1[i].dName;
+ 				option.value = data1[i].dId;
+ 				dept.appendChild(option);
+ 			}
+ 		});
+ 	
+ 		var url2 = '${pageContext.request.contextPath}/jobAjax?method=getJob';
+ 		var job = document.getElementsByClassName('job')[0];
+ 		$.get(url2,function(data,status) {
+ 			var jobs = eval(data);
+ 			for(var i=0;i<jobs.length;i++) {
+ 				var option = document.createElement('option');
+ 				option.innerText = jobs[i].jName;
+ 				option.value = jobs[i].jId;
+ 				job.appendChild(option);
+ 			}
+ 		});
+   	}
+	
 
 	</script>
 </head>
@@ -124,95 +149,95 @@
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr><td height="10"></td></tr>
   <tr>
-    <td width="15" height="32"><img src="${ctx}/images/main_locleft.gif" width="15" height="32"></td>
-	<td class="main_locbg font2"><img src="${ctx}/images/pointer.gif">&nbsp;&nbsp;&nbsp;当前位置：员工管理  &gt; 添加员工</td>
-	<td width="15" height="32"><img src="${ctx}/images/main_locright.gif" width="15" height="32"></td>
+    <td width="15" height="32"><img src="${pageContext.request.contextPath}/images/main_locleft.gif" width="15" height="32"></td>
+	<td class="main_locbg font2"><img src="${pageContext.request.contextPath}/images/pointer.gif">&nbsp;&nbsp;&nbsp;当前位置：员工管理  &gt; 添加员工</td>
+	<td width="15" height="32"><img src="${pageContext.request.contextPath}/images/main_locright.gif" width="15" height="32"></td>
   </tr>
 </table>
 <table width="100%" height="90%" border="0" cellpadding="5" cellspacing="0" class="main_tabbor">
   <tr valign="top">
     <td>
-    	 <form action="${ctx}/employee/addEmployee" id="employeeForm" method="post">
+    	 <form action="${pageContext.request.contextPath}/emps?method=addEmployee" id="employeeForm" method="post">
 		 	<!-- 隐藏表单，flag表示添加标记 -->
     	 	<input type="hidden" name="flag" value="2">
 		  <table width="100%" border="0" cellpadding="0" cellspacing="10" class="main_tab">
 		    <tr><td class="font3 fftd">
 		    	<table>
 		    		<tr>
-		    			<td class="font3 fftd">姓名：<input type="text" name="name" id="name" size="20"/></td>
-		    			<td class="font3 fftd">身份证号码：<input type="text" name="cardId" id="cardId" size="20"/></td>
+		    			<td class="font3 fftd">姓名：<input type="text" name="eName" id="name" size="20"/></td>
+		    			<td class="font3 fftd">身份证号码：<input type="text" name="eIdCard" id="cardId" size="20"/></td>
 		    		</tr>
 		    		<tr>
 		    			<td class="font3 fftd">性别：
-									<select name="sex" style="width:143px;">
+									<select name="eGender" style="width:143px;">
 					    			<option value="0">--请选择性别--</option>
 					    			<option value="1">男</option>
 					    			<option value="2">女</option>
 					    		</select></td>
 		    			<td class="font3 fftd">职&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位：
-		    			 <select name="job_id" style="width:143px;">
+		    			 <select name="jId" class="job" style="width:143px;">
 					    			<option value="0">--请选择职位--</option>
-					    			<c:forEach items="${requestScope.jobs }" var="job">
+					    			<%-- <c:forEach items="${requestScope.jobs }" var="job">
 					    				<option value="${job.id }">${job.name }</option>
-					    			</c:forEach>
+					    			</c:forEach> --%>
 					    		</select>
 					    </td>
 		    		</tr>
 		    		<tr>
-		    			<td class="font3 fftd">学历：<input name="education" id="education" size="20"/></td>
-		    			<td class="font3 fftd">邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱：<input name="email" id="email" size="20"/></td>
+		    			<td class="font3 fftd">学历：<input name="eStu" id="education" size="20"/></td>
+		    			<td class="font3 fftd">邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱：<input name="eEmail" id="email" size="20"/></td>
 		    		</tr>
 		    		<tr>
-		    			<td class="font3 fftd">手机：<input name="phone" id="phone" size="20"/></td>
-		    			<td class="font3 fftd">电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话：<input name="tel" id="tel" size="20"/></td>
-		    		</tr>
+		    			<td class="font3 fftd">手机：<input name="eTelNum" id="phone" size="20"/></td>
+<!-- 		    			<td class="font3 fftd">电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话：<input name="tel" id="tel" size="20"/></td>
+ -->		    		</tr>
 		    		
 		    	</table>
 		    </td></tr>
 			<tr><td class="main_tdbor"></td></tr>
 			
-			<tr>
+<!-- 			<tr>
 				<td class="font3 fftd">
 					政治面貌：<input name="party" id="party" size="40"/>&nbsp;&nbsp;
 					QQ&nbsp;&nbsp;号码：<input name="qqNum" id="qqNum" size="20"/>
 				</td>
 			</tr>
-			<tr><td class="main_tdbor"></td></tr>
+ -->			<tr><td class="main_tdbor"></td></tr>
 			
 			<tr>
 				<td class="font3 fftd">
-					联系地址：<input name="address" id="address" size="40"/>&nbsp;&nbsp;
-					邮政编码：<input name="postCode" id="postCode" size="20"/>
-				</td>
+					联系地址：<input name="eAddress" id="address" size="40"/>&nbsp;&nbsp;
+<!-- 					邮政编码：<input name="postCode" id="postCode" size="20"/>
+ -->				</td>
 			</tr>
 			<tr><td class="main_tdbor"></td></tr>
 			
-			<tr>
+			<!-- <tr>
 				<td class="font3 fftd">
 					出生日期：<input cssClass="Wdate" onfocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd'});" 
 					name="birthday" id="birthday" size="40"/>&nbsp;&nbsp;
 					民&nbsp;&nbsp;&nbsp;&nbsp;族：<input name="race" id="race" size="20"/>
 				</td>
-			</tr>
+			</tr> -->
 			<tr><td class="main_tdbor"></td></tr>
 			
-			<tr>
+<!-- 			<tr>
 				<td class="font3 fftd">
 					所学专业：<input  name="speciality" id="speciality" size="40"/>&nbsp;&nbsp;
 					爱&nbsp;&nbsp;&nbsp;&nbsp;好：<input name="hobby" id="hobby" size="20"/>
 				</td>
 			</tr>
-			<tr><td class="main_tdbor"></td></tr>
+ -->			<tr><td class="main_tdbor"></td></tr>
 			
 			<tr>
 				<td class="font3 fftd">
-					备&nbsp;&nbsp;&nbsp;&nbsp;注：<input name="remark" id="remark" size="40"/>
-					&nbsp;&nbsp;所属部门：
-					<select  name="dept_id" style="width:100px;">
+<!-- 					备&nbsp;&nbsp;&nbsp;&nbsp;注：<input name="remark" id="remark" size="40"/>
+ -->					&nbsp;&nbsp;所属部门：
+					<select id="dept" name="dId" style="width:100px;">
 						   <option value="0">--部门选择--</option>
-						   <c:forEach items="${requestScope.depts }" var="dept">
+						  <%--  <c:forEach items="${requestScope.depts }" var="dept">
 			    				<option value="${dept.id }">${dept.name }</option>
-			    			</c:forEach>
+			    			</c:forEach> --%>
 					</select>
 				</td>
 			</tr>

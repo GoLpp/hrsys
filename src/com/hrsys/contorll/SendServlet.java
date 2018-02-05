@@ -11,19 +11,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.hrsys.pojo.Employee;
 import com.hrsys.pojo.Job;
 import com.hrsys.pojo.Notice;
+import com.hrsys.service.IEmployeeService;
 import com.hrsys.service.IJobService;
 import com.hrsys.service.INoticeService;
 import com.hrsys.utils.ObjectUtils;
 import com.hrsys.utils.ObjectWraperUtils;
+import com.sun.org.apache.bcel.internal.generic.StackInstruction;
 @WebServlet(urlPatterns="/send")
 public class SendServlet extends HttpServlet{
 	private IJobService jobService = null;
 	private INoticeService noticeService = null;
+	private IEmployeeService employeeService = null;
 	public SendServlet() throws ClassNotFoundException, InstantiationException, IllegalAccessException {
 		jobService = ObjectUtils.getObject("jobService");
 		noticeService = ObjectUtils.getObject("noticeService");
+		employeeService = ObjectUtils.getObject("employeeService");
 	}
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -45,6 +50,36 @@ public class SendServlet extends HttpServlet{
 			updateNoticeToJsp(req, resp);
 		}else if("addNoticeToJsp".equals(name)) {
 			String path = "WEB-INF/jsp/notice/showAddNotice.jsp";
+			jumpPage1(req, resp, path);
+		}else if("updateEmployeeToJsp".equals(name)) {
+			updateEmployeeToJsp(req, resp);
+		}else if("addEmployeeToJsp".equals(name)) {
+			String path = "WEB-INF/jsp/employee/showAddEmployee.jsp";
+			jumpPage1(req, resp, path);
+		}
+	}
+	/**
+	 * 
+	 * @Title: updateEmployeeToJsp 
+	 * @Description: 跳转到更新员工的界面
+	 * @param @param req
+	 * @param @param resp
+	 * @param @throws ServletException
+	 * @param @throws IOException  参数说明 
+	 * @return void    返回类型 
+	 * @throws
+	 */
+	private void updateEmployeeToJsp(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		try {
+			Employee employee = ObjectWraperUtils.getObject(req, Employee.class);
+			employee = employeeService.findEmployeeById(employee);
+			req.setAttribute("employee", employee);
+			String path = "WEB-INF/jsp/employee/showUpdateEmployee.jsp";
+			jumpPage1(req, resp, path);
+		} catch (SQLException | IllegalAccessException | InvocationTargetException | InstantiationException e) {
+			System.out.println(e.getMessage());
+			String path = "emps?method=findALLEmployee";
 			jumpPage1(req, resp, path);
 		}
 	}

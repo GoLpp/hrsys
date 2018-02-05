@@ -1,6 +1,7 @@
 package com.hrsys.dao.impl;
 
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.dbutils.handlers.BeanHandler;
@@ -74,7 +75,7 @@ public class EmployeeDao implements IEmployeeDao{
 				employee.geteStu(),
 				employee.getdId(),
 				employee.geteIdCard(),
-				employee.geteCreateTime(),
+				new Date(),
 				employee.geteAddress());
 	}
 /**
@@ -90,10 +91,10 @@ public class EmployeeDao implements IEmployeeDao{
 		if(employee.geteName()!=null && !employee.geteName().equals("")) {
 			sql.append(" and eName like '%"+employee.geteName()+"%'");
 		}
-		if(employee.getdId() != null) {
+		if(employee.getdId() != null && employee.getdId() != 0) {
 			sql.append(" and dId like '%"+employee.getdId()+"%'");
 		}
-		if(employee.geteGender() != null) {
+		if(employee.geteGender() != 0) {
 			sql.append(" and eGender like '"+employee.geteGender()+"'");
 		}
 		if(employee.geteTelNum() != null && !employee.geteTelNum().equals("")) {
@@ -102,8 +103,8 @@ public class EmployeeDao implements IEmployeeDao{
 		if(employee.geteIdCard() != null && !employee.geteIdCard().equals("")) {
 			sql.append(" and eIdCard like '%"+employee.geteIdCard()+"%'");
 		}
-		if(employee.getdId() != null) {
-			sql.append(" and dId like '%"+employee.getdId()+"%'");
+		if(employee.getjId() != null && employee.getjId() != 0) {
+			sql.append(" and dId like '%"+employee.getjId()+"%'");
 		}
 	}
 }
