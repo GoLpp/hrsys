@@ -17,6 +17,7 @@ import com.hrsys.service.IJobService;
 import com.hrsys.utils.ObjectUtils;
 
 import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 @WebServlet(urlPatterns="/deptAjax")
 public class AjaxServlet extends HttpServlet{
 	private IDepartmentService deptService = null;
@@ -46,12 +47,13 @@ public class AjaxServlet extends HttpServlet{
 	 */
 	private void getDepts(HttpServletResponse resp) throws IOException {
 		try {
-			System.out.println("ajax");
 			resp.setContentType("text/html;charset=uft8");
 			resp.setCharacterEncoding("UTF-8");
 			List<Department> departments = deptService.findAllDepartment();
 			JSONArray depts = JSONArray.fromObject(departments);
 			resp.getWriter().print(depts.toString());
+			resp.getWriter().flush();
+			resp.getWriter().close();
 		} catch (SQLException e) {
 			System.out.println("ajax ß∞‹" + e.getMessage());
 		}

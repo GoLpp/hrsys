@@ -1,6 +1,7 @@
 package com.hrsys.dao.impl;
 
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.dbutils.handlers.BeanHandler;
@@ -20,7 +21,7 @@ import com.hrsys.utils.JdbcUtils;
 public class DownloadDao implements IDownloadDao{
 
 	@Override
-	public List<DownLoad> findAllDownload(DownLoad downLoad) throws SQLException {
+	public List<DownLoad> findAllDownload() throws SQLException {
 		String sql = "select *from t_download where downState=1";
 		return JdbcUtils.getQueryRunner().query(sql, new BeanListHandler<>(DownLoad.class));
 	}
@@ -37,7 +38,7 @@ public class DownloadDao implements IDownloadDao{
 				+ "doCreateTime=?,url=?,uId=? where doId=?";
 		JdbcUtils.getQueryRunner().update(sql, downLoad.getDoDescrip(),
 				downLoad.getDoTitle(),
-				downLoad.getDoCreateTime(),
+				new Date(),
 				downLoad.getUrl(),
 				downLoad.getuId(),
 				downLoad.getDoId());
@@ -49,7 +50,7 @@ public class DownloadDao implements IDownloadDao{
 				+ "values(?,?,?,?,?)";
 		JdbcUtils.getQueryRunner().update(sql, downLoad.getDoDescrip(),
 				downLoad.getDoTitle(),
-				downLoad.getDoCreateTime(),
+				new Date(),
 				downLoad.getUrl(),
 				downLoad.getuId());
 	}

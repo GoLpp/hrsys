@@ -18,11 +18,12 @@ public class DownLoad implements Serializable{
 	private Integer uId;        //上传用户id
 	private String url;         //上传保存的文件url
 	private Integer downState;  //资源状态
+	private User user;
 	public DownLoad() {
 		super();
 	}
 	public DownLoad(Integer doId, String doDescrip, String doTitle, Date doCreateTime, Integer uId, String url,
-			Integer downState) {
+			Integer downState, User user) {
 		super();
 		this.doId = doId;
 		this.doDescrip = doDescrip;
@@ -31,6 +32,7 @@ public class DownLoad implements Serializable{
 		this.uId = uId;
 		this.url = url;
 		this.downState = downState;
+		this.user = user;
 	}
 	public Integer getDoId() {
 		return doId;
@@ -74,9 +76,16 @@ public class DownLoad implements Serializable{
 	public void setDownState(Integer downState) {
 		this.downState = downState;
 	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
 	@Override
 	public String toString() {
 		return "DownLoad [doId=" + doId + ", doDescrip=" + doDescrip + ", doTitle=" + doTitle + ", doCreateTime="
-				+ doCreateTime + ", uId=" + uId + ", url=" + url + ", downState=" + downState + "]";
+				+ doCreateTime + ", uId=" + uId + ", url=" + url + ", downState=" + downState + ", user=" + user + "]";
 	}
+	
 }

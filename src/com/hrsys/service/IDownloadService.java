@@ -23,7 +23,7 @@ public interface IDownloadService {
 	 * @return List<DownLoad>    ∑µªÿ¿‡–Õ 
 	 * @throws
 	 */
-	List<DownLoad> findAllDownload(DownLoad downLoad) throws SQLException;
+	List<DownLoad> findAllDownload() throws SQLException;
 	
 	/**
 	 * 

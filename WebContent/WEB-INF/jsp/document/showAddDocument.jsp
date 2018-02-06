@@ -11,11 +11,11 @@
 		<meta http-equiv="keywords" content="keyword1,keyword2,keyword3" />
 		<meta http-equiv="description" content="This is my page" />
 		<link href="fkjava.ico" rel="shortcut icon" type="image/x-icon" />
-		<link href="${ctx }/css/css.css" type="text/css" rel="stylesheet" />
-		<script type="text/javascript" src="${ctx }/js/jquery-1.11.0.js"></script>
-        <script type="text/javascript" src="${ctx }/js/jquery-migrate-1.2.1.js"></script>
-		<script type="text/javascript" src="${ctx}/js/tiny_mce/tiny_mce.js"></script>
-		<script type="text/javascript" src="${ctx}/js/jquery.form.js"></script>
+		<link href="${pageContext.request.contextPath}/css/css.css" type="text/css" rel="stylesheet" />
+		<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.11.0.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-migrate-1.2.1.js"></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/js/tiny_mce/tiny_mce.js"></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.form.js"></script>
 		<script type="text/javascript">
 		
 	    $(document).ready(function() {
@@ -45,10 +45,10 @@
 		<table width="100%" border="0" cellpadding="0" cellspacing="0">
 			 <tr><td height="10"></td></tr>
 			 <tr>
-			    <td width="15" height="32"><img src="${ctx }/images/main_locleft.gif" width="15" height="32"></td>
-				<td class="main_locbg font2"><img src="${ctx }/images/pointer.gif">&nbsp;&nbsp;&nbsp;当前位置：文档管理  &gt; 上传文档
+			    <td width="15" height="32"><img src="${pageContext.request.contextPath}/images/main_locleft.gif" width="15" height="32"></td>
+				<td class="main_locbg font2"><img src="${pageContext.request.contextPath}/images/pointer.gif">&nbsp;&nbsp;&nbsp;当前位置：文档管理  &gt; 上传文档
 </td>
-				<td width="15" height="32"><img src="${ctx }/images/main_locright.gif" width="15" height="32"></td>
+				<td width="15" height="32"><img src="${pageContext.request.contextPath}/images/main_locright.gif" width="15" height="32"></td>
 			 </tr>
 		</table>
 	
@@ -56,7 +56,7 @@
 		  	<tr valign="top">
 			    <td>
 			    
-				 <form id="documentForm" name="documentForm" action="${ctx }/document/addDocument" enctype="multipart/form-data" method="post">
+				 <form id="documentForm" name="documentForm" action="${pageContext.request.contextPath}/down?method=addDocument" enctype="multipart/form-data" method="post">
                         <!-- 隐藏表单，flag表示添加标记 -->
     	 			<input type="hidden" name="flag" value="2">
 				  <table width="100%" border="0" cellpadding="0" cellspacing="10" class="main_tab">
@@ -64,13 +64,13 @@
 					    <tr><td class="font3 fftd">
 					              
 					                
-					                文档标题：<input type="text" name="title" size="30" id="title"/></td>
+					                文档标题：<input type="text" name="doTitle" size="30" id="title"/></td>
 					    </tr>
 						<tr><td class="main_tdbor"></td></tr>
 						
 						
 						<tr><td class="font3 fftd">文档描述：<br/>
-							<textarea name="remark" cols="88" rows="11" id="content"></textarea>
+							<textarea name="doDescrip" cols="88" rows="11" id="content"></textarea>
 						</td></tr>
 						<tr><td class="main_tdbor"></td></tr>
 						
@@ -86,8 +86,6 @@
 								<input type="reset" value="重置">
 						</td></tr>
 						<tr><td class="main_tdbor"></td></tr>
-					
-
 				  </table>
 				  </form>
 				</td>

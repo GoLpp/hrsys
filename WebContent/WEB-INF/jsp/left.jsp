@@ -87,8 +87,8 @@
 		  <tr><td id="navbg5" class="left_nav_closed" onClick="showsubmenu(5)"><div class="font1">下载中心</div></td></tr>
 		  <tr valign="top" id="submenu5" style="display: none">
 		    <td class="left_nav_bgshw tdbtmline" height="50">
-		    	<p class="left_nav_link"><img src="${pageContext.request.contextPath}/images/left_nav_arrow.gif">&nbsp;&nbsp;<a href="${pageContext.request.contextPath }/document/selectDocument" target="main">文档查询</a></img></p>
-			  	<p class="left_nav_link"><img src="${pageContext.request.contextPath}/images/left_nav_arrow.gif">&nbsp;&nbsp;<a href="${pageContext.request.contextPath }/document/addDocument?flag=1" target="main">上传文档</a></img></p>
+		    	<p class="left_nav_link"><img src="${pageContext.request.contextPath}/images/left_nav_arrow.gif">&nbsp;&nbsp;<a href="${pageContext.request.contextPath }/down?method=findAllDocument" target="main">文档查询</a></img></p>
+			  	<p class="left_nav_link"><img src="${pageContext.request.contextPath}/images/left_nav_arrow.gif">&nbsp;&nbsp;<a href="${pageContext.request.contextPath }/down?method=upDocumentToJsp" target="main">上传文档</a></img></p>
 			</td>
 		  </tr>
 		  <tr><td height="2"></td></tr>

@@ -11,9 +11,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.hrsys.pojo.DownLoad;
 import com.hrsys.pojo.Employee;
 import com.hrsys.pojo.Job;
 import com.hrsys.pojo.Notice;
+import com.hrsys.service.IDownloadService;
 import com.hrsys.service.IEmployeeService;
 import com.hrsys.service.IJobService;
 import com.hrsys.service.INoticeService;
@@ -25,10 +27,12 @@ public class SendServlet extends HttpServlet{
 	private IJobService jobService = null;
 	private INoticeService noticeService = null;
 	private IEmployeeService employeeService = null;
+	private IDownloadService downloadService = null;
 	public SendServlet() throws ClassNotFoundException, InstantiationException, IllegalAccessException {
 		jobService = ObjectUtils.getObject("jobService");
 		noticeService = ObjectUtils.getObject("noticeService");
 		employeeService = ObjectUtils.getObject("employeeService");
+		downloadService = ObjectUtils.getObject("downLoadService");
 	}
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -55,6 +59,33 @@ public class SendServlet extends HttpServlet{
 			updateEmployeeToJsp(req, resp);
 		}else if("addEmployeeToJsp".equals(name)) {
 			String path = "WEB-INF/jsp/employee/showAddEmployee.jsp";
+			jumpPage1(req, resp, path);
+		}else  if("updateDocumentToJsp".equals(name)) {
+			updateDocumentToJsp(req, resp);
+		}
+	}
+	/**
+	 * 
+	 * @Title: updateDocumentToJsp 
+	 * @Description: 跳转到文件下载更新页面
+	 * @param @param req
+	 * @param @param resp
+	 * @param @throws ServletException
+	 * @param @throws IOException  参数说明 
+	 * @return void    返回类型 
+	 * @throws
+	 */
+	private void updateDocumentToJsp(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		DownLoad downLoad;
+		try {
+			downLoad = ObjectWraperUtils.getObject(req, DownLoad.class);
+			downLoad = downloadService.findDownloadById(downLoad);
+			req.setAttribute("document", downLoad);
+			String path = "WEB-INF/jsp/document/showUpdateDocument.jsp";
+			jumpPage1(req, resp, path);
+		} catch (InstantiationException | IllegalAccessException | InvocationTargetException | SQLException e) {
+			String path = "down?method=findAllDocument";
 			jumpPage1(req, resp, path);
 		}
 	}

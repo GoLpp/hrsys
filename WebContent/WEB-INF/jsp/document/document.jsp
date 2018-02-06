@@ -12,15 +12,15 @@
 	<meta http-equiv="expires" content="0" />    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3" />
 	<meta http-equiv="description" content="This is my page" />
-	<link href="${ctx }/css/css.css" type="text/css" rel="stylesheet" />
-	<link href="${ctx }/css/pager.css" type="text/css" rel="stylesheet" />
-	<script type="text/javascript" src="${ctx }/js/jquery-1.11.0.js"></script>
-    <script type="text/javascript" src="${ctx }/js/jquery-migrate-1.2.1.js"></script>
-	<link href="${ctx }/js/ligerUI/skins/Aqua/css/ligerui-dialog.css" rel="stylesheet" type="text/css" />  
-	<script src="${ctx }/js/ligerUI/js/core/base.js" type="text/javascript"></script>
-	<script src="${ctx }/js/ligerUI/js/plugins/ligerDialog.js" type="text/javascript"></script>
-	<script src="${ctx }/js/ligerUI/js/plugins/ligerDrag.js" type="text/javascript"></script>
-	<script src="${ctx }/js/ligerUI/js/plugins/ligerResizable.js" type="text/javascript"></script>
+	<link href="${pageContext.request.contextPath }/css/css.css" type="text/css" rel="stylesheet" />
+	<link href="${pageContext.request.contextPath }/css/pager.css" type="text/css" rel="stylesheet" />
+	<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-1.11.0.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-migrate-1.2.1.js"></script>
+	<link href="${pageContext.request.contextPath }/js/ligerUI/skins/Aqua/css/ligerui-dialog.css" rel="stylesheet" type="text/css" />  
+	<script src="${pageContext.request.contextPath }/js/ligerUI/js/core/base.js" type="text/javascript"></script>
+	<script src="${pageContext.request.contextPath }/js/ligerUI/js/plugins/ligerDialog.js" type="text/javascript"></script>
+	<script src="${pageContext.request.contextPath }/js/ligerUI/js/plugins/ligerDrag.js" type="text/javascript"></script>
+	<script src="${pageContext.request.contextPath }/js/ligerUI/js/plugins/ligerResizable.js" type="text/javascript"></script>
 	<script type="text/javascript">
 	    $(function(){
 	    	
@@ -73,7 +73,7 @@
 	 				   if(r){
 	 					   // alert("删除："+ids.get());
 	 					   // 发送请求
-	 					   window.location = "${ctx }/document/removeDocument?ids=" + ids.get();
+	 					   window.location = "${pageContext.request.contextPath }/down?method=removeDocument&doId=" + ids.get();
 	 				   }
 	 			   });
 	 		   }
@@ -84,7 +84,7 @@
 	    		/** 得到需要下载的文档的id */
 	    		var id = this.id.replace("down_","");
 	    		/** 下载该文档 */
-	    		window.location = "${ctx}/document/downLoad?id="+id;
+	    		window.location = "${pageContext.request.contextPath }/down?method=downLoad&doId="+id;
 	    	})
 	    	
 	    	
@@ -102,9 +102,9 @@
 	<table width="100%" border="0" cellpadding="0" cellspacing="0">
 	  <tr><td height="10"></td></tr>
 	  <tr>
-	    <td width="15" height="32"><img src="${ctx }/images/main_locleft.gif" width="15" height="32"></td>
-		<td class="main_locbg font2"><img src="${ctx }/images/pointer.gif">&nbsp;&nbsp;&nbsp;当前位置：文档管理 &gt; 文档查询</td>
-		<td width="15" height="32"><img src="${ctx }/images/main_locright.gif" width="15" height="32"></td>
+	    <td width="15" height="32"><img src="${pageContext.request.contextPath }/images/main_locleft.gif" width="15" height="32"></td>
+		<td class="main_locbg font2"><img src="${pageContext.request.contextPath }/images/pointer.gif">&nbsp;&nbsp;&nbsp;当前位置：文档管理 &gt; 文档查询</td>
+		<td width="15" height="32"><img src="${pageContext.request.contextPath }/images/main_locright.gif" width="15" height="32"></td>
 	  </tr>
 	</table>
 	
@@ -115,11 +115,11 @@
 		  <table width="100%" border="0" cellpadding="0" cellspacing="10" class="main_tab">
 		    <tr>
 			  <td class="fftd">
-			  	<form name="documentform" method="post" id="documentform" action="${ctx }/document/selectDocument">
+			  	<form name="documentform" method="post" id="documentform" action="${pageContext.request.contextPath }/down?method=findDocumentByCondition">
 				    <table width="100%" border="0" cellpadding="0" cellspacing="0">
 					  <tr>
 					    <td class="font3">
-					    	标题：<input type="text" name="title" />
+					    	标题：<input type="text" name="doTitle" />
 					    	<input type="submit"  value="搜索"/>
 					    	<input type="button" id="delete" value="删除">
 					    </td>
@@ -145,21 +145,21 @@
 			  <td>操作</td>
 			  <td>下载</td>
 			</tr>
-			<c:forEach items="${requestScope.documents}" var="document" varStatus="stat">
-				<tr ondblclick="down(${document.id});"  class="main_trbg" align="center" id="data_${stat.index}">
-					<td><input type="checkbox" id="box_${stat.index}" value="${document.id}"></td>
-					 <td>${document.title }</td>
+			<c:forEach items="${documents}" var="document" varStatus="stat">
+				<tr ondblclick="down(${document.doId});"  class="main_trbg" align="center" id="data_${stat.index}">
+					<td><input type="checkbox" id="box_${stat.index}" value="${document.doId}"></td>
+					 <td>${document.doTitle }</td>
 					 <td>
-					  	<f:formatDate value="${document.createDate}" 
+					  	<f:formatDate value="${document.doCreateTime}" 
 								type="date" dateStyle="long"/>
 					  </td>
-					  <td>${document.user.username }</td>
-					  <td>${document.remark }</td>
-					 <td align="center" width="40px;"><a href="${ctx }/document/updateDocument?flag=1&id=${document.id}">
-							<img title="修改" src="${ctx }/images/update.gif"/></a>
+					  <td>${document.user.uName }</td>
+					  <td>${document.doDescrip }</td>
+					 <td align="center" width="40px;"><a href="${pageContext.request.contextPath }/send?method=updateDocumentToJsp&doId=${document.doId}">
+							<img title="修改" src="${pageContext.request.contextPath }/images/update.gif"/></a>
 					  </td>
-					  <td align="center"  width="40px;"><a href="#" id="down_${document.id }">
-							<img width="20" height="20" title="下载" src="${ctx }/images/downLoad.png"/></a>
+					  <td align="center"  width="40px;"><a href="#" id="down_${document.doId }">
+							<img width="20" height="20" title="下载" src="${pageContext.request.contextPath }/images/downLoad.png"/></a>
 					  </td>
 				</tr>
 			</c:forEach>
@@ -174,7 +174,7 @@
 	  	      pageIndex="${pageModel.pageIndex}" 
 	  	      pageSize="${pageModel.pageSize}" 
 	  	      recordCount="${pageModel.recordCount}" 
-	  	      submitUrl="${ctx}/document/selectDocument.action?pageModel.pageIndex={0}&document.title=${document.title}"
+	  	      submitUrl="${pageContext.request.contextPath }/document/selectDocument.action?pageModel.pageIndex={0}&document.title=${document.title}"
 	  	      style="flickr"
 	  	      />
 	  </td></tr>

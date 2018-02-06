@@ -20,7 +20,7 @@ public interface IDownloadDao {
 	 * @return List<DownLoad>    ∑µªÿ¿‡–Õ 
 	 * @throws
 	 */
-	List<DownLoad> findAllDownload(DownLoad downLoad) throws SQLException;
+	List<DownLoad> findAllDownload() throws SQLException;
 	
 	/**
 	 * 
