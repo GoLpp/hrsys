@@ -179,8 +179,9 @@
 					    		</select>
 					    </td>
 		    			<td class="font3 fftd">职&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位：
-		    			 	<select id="job_id" class="job" name="jId" style="width:143px;">
+		    			 	<select id="job_id" class="job" name="jId" style="width:143px;">	
 					    			<option value="0">--请选择职位--</option>
+					    			
 					    			<%-- <c:forEach items="${requestScope.jobs }" var="job">
 					    				<option value="${job.id }">${job.name }</option>
 					    			</c:forEach> --%>

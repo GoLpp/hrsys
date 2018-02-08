@@ -2,11 +2,11 @@ package com.hrsys.utils;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -64,7 +64,13 @@ public class UpLoadUtils {
 			}else{
 				try {
 					fileName = fileItem.getName();
-					fileItem.write(new File(req.getServletContext().getRealPath("/upload"),fileName));
+					File file = new File(req.getServletContext().getRealPath(fileName));
+					if(file.exists()) {
+						file.delete();
+						fileItem.write(new File(req.getServletContext().getRealPath("/upload"),fileName));
+					}else{
+						fileItem.write(new File(req.getServletContext().getRealPath("/upload"),fileName));
+					}
 				} catch (Exception e) {
 					System.out.println("文件上传失败" + e.getMessage());
 				}
@@ -87,7 +93,16 @@ public class UpLoadUtils {
 		String downFile = req.getServletContext().getRealPath(downLoad.getUrl());
 		String fileName = downLoad.getUrl();
 		byte[] bytes = fileName.getBytes("UTF-8");
-		fileName = new String(bytes, "ISO-8859-1");
+		
+		if (req.getHeader("user-agent").toLowerCase().contains("msie")) {
+	        // IE
+			fileName = URLEncoder.encode(fileName, "UTF-8");
+		} else {
+	        // 非IE
+			fileName = new String(fileName.getBytes("UTF-8"), "iso-8859-1");
+		}
+		
+		//fileName = new String(bytes, "ISO-8859-1");
 		
 		resp.setHeader("content-disposition", "attachment;filename=" + fileName);
 		InputStream inputStream = null;

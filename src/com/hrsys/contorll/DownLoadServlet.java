@@ -100,6 +100,7 @@ public class DownLoadServlet extends HttpServlet{
 			throws UnsupportedEncodingException, ServletException, IOException {
 		String path;
 		User user = (User) req.getSession().getAttribute("user");
+		
 		String url=UpLoadUtils.upDocument(req, downLoad);
 		DownLoad downLoad2 = null;
 		try {
@@ -111,6 +112,7 @@ public class DownLoadServlet extends HttpServlet{
 		if(user.getuId().intValue() == downLoad2.getuId().intValue()) {
 			downLoad.setUrl(url);
 			downLoad.setuId(user.getuId());
+			
 			try {
 				downloadService.updateDownload(downLoad);
 				path = "down?method=findAllDocument";

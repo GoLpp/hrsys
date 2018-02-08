@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +16,7 @@ import com.hrsys.pojo.Department;
 import com.hrsys.service.IDepartmentService;
 import com.hrsys.utils.ObjectUtils;
 import com.hrsys.utils.ObjectWraperUtils;
-
+@MultipartConfig
 @WebServlet(urlPatterns="/dept")
 public class DeptServlet extends HttpServlet{
 	private IDepartmentService deptService = null;

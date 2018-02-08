@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="f" %>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -126,13 +127,15 @@
 	  </tr>
 	  <!-- 分页标签 -->
 	  <tr valign="top"><td align="center" class="font3">
-	  	 <fkjava:pager
-	  	        pageIndex="${requestScope.pageModel.pageIndex}" 
-	  	        pageSize="${requestScope.pageModel.pageSize}" 
-	  	        recordCount="${requestScope.pageModel.recordCount}" 
+	  
+	  	<td> <fkjava:pager
+	  	        pageIndex="${pageModel.pageIndex}" 
+	  	        pageSize="${pageModel.pageSize}" 
+	  	        recordCount="${pageModel.recordCount}" 
 	  	        style="digg"
 	  	        submitUrl="${pageContext.request.contextPath}/dept/selectDept?pageIndex={0}"/>
-	  </td></tr>
+	    </td>
+	  </tr>
 	</table>
 	<div style="height:10px;"></div>
 </body>
